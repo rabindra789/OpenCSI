@@ -20,6 +20,8 @@ captures/            Serial capture evidence files
 docs/                Development environment and project documentation
 ```
 
+See [`docs/DEVELOPMENT-ENVIRONMENT.md`](docs/DEVELOPMENT-ENVIRONMENT.md) for setup instructions.
+
 ## Milestones
 
 | Milestone | Description | Status |
