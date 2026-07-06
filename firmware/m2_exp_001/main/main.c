@@ -11,6 +11,7 @@
 #include "driver/gpio.h"
 #include "sdkconfig.h"
 #include "wifi.h"
+#include "csi.h"
 
 #define TAG "EXP_001"
 #define LED_GPIO GPIO_NUM_2
@@ -159,22 +160,7 @@ static void csi_callback(void *ctx, wifi_csi_info_t *data)
 
 static void on_wifi_connected(void)
 {
-    printf("Enabling CSI...\n");
-
-    wifi_csi_config_t csi_config = {
-        .lltf_en = true,
-        .htltf_en = true,
-        .stbc_htltf2_en = true,
-        .ltf_merge_en = true,
-        .channel_filter_en = true,
-        .manu_scale = true,
-        .shift = 0,
-        .dump_ack_en = true,
-    };
-    esp_wifi_set_csi_config(&csi_config);
-    esp_wifi_set_csi_rx_cb(csi_callback, NULL);
-    esp_wifi_set_csi(true);
-    printf("CSI enabled.\n");
+    csi_init(csi_callback);
 }
 
 static void blink_task(void *pvParameter)
