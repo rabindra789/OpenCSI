@@ -8,9 +8,9 @@
 #include "esp_event.h"
 #include "esp_log.h"
 #include "esp_timer.h"
-#include "nvs_flash.h"
 #include "driver/gpio.h"
 #include "sdkconfig.h"
+#include "wifi.h"
 
 #define TAG "EXP_001"
 #define LED_GPIO GPIO_NUM_2
@@ -157,35 +157,24 @@ static void csi_callback(void *ctx, wifi_csi_info_t *data)
     update_stats(data);
 }
 
-static void wifi_event_handler(void *arg, esp_event_base_t event_base,
-                               int32_t event_id, void *event_data)
+static void on_wifi_connected(void)
 {
-    if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_START) {
-        printf("WiFi started. Connecting...\n");
-        esp_wifi_connect();
-    } else if (event_base == WIFI_EVENT && event_id == WIFI_EVENT_STA_DISCONNECTED) {
-        printf("Disconnected. Reconnecting...\n");
-        esp_wifi_connect();
-    } else if (event_base == IP_EVENT && event_id == IP_EVENT_STA_GOT_IP) {
-        ip_event_got_ip_t *event = (ip_event_got_ip_t *)event_data;
-        printf("Connected. IP: " IPSTR "\n", IP2STR(&event->ip_info.ip));
-        printf("Enabling CSI...\n");
+    printf("Enabling CSI...\n");
 
-        wifi_csi_config_t csi_config = {
-            .lltf_en = true,
-            .htltf_en = true,
-            .stbc_htltf2_en = true,
-            .ltf_merge_en = true,
-            .channel_filter_en = true,
-            .manu_scale = true,
-            .shift = 0,
-            .dump_ack_en = true,
-        };
-        esp_wifi_set_csi_config(&csi_config);
-        esp_wifi_set_csi_rx_cb(csi_callback, NULL);
-        esp_wifi_set_csi(true);
-        printf("CSI enabled.\n");
-    }
+    wifi_csi_config_t csi_config = {
+        .lltf_en = true,
+        .htltf_en = true,
+        .stbc_htltf2_en = true,
+        .ltf_merge_en = true,
+        .channel_filter_en = true,
+        .manu_scale = true,
+        .shift = 0,
+        .dump_ack_en = true,
+    };
+    esp_wifi_set_csi_config(&csi_config);
+    esp_wifi_set_csi_rx_cb(csi_callback, NULL);
+    esp_wifi_set_csi(true);
+    printf("CSI enabled.\n");
 }
 
 static void blink_task(void *pvParameter)
@@ -248,37 +237,7 @@ void app_main(void)
 {
     xTaskCreate(blink_task, "blink", 2048, NULL, 1, NULL);
 
-    esp_err_t ret = nvs_flash_init();
-    if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
-        ESP_ERROR_CHECK(nvs_flash_erase());
-        ret = nvs_flash_init();
-    }
-    ESP_ERROR_CHECK(ret);
-
-    ESP_ERROR_CHECK(esp_netif_init());
-    ESP_ERROR_CHECK(esp_event_loop_create_default());
-
-    esp_netif_t *sta_netif = esp_netif_create_default_wifi_sta();
-    assert(sta_netif);
-
-    wifi_init_config_t cfg = WIFI_INIT_CONFIG_DEFAULT();
-    ESP_ERROR_CHECK(esp_wifi_init(&cfg));
-
-    ESP_ERROR_CHECK(esp_event_handler_instance_register(
-        WIFI_EVENT, ESP_EVENT_ANY_ID, &wifi_event_handler, NULL, NULL));
-    ESP_ERROR_CHECK(esp_event_handler_instance_register(
-        IP_EVENT, IP_EVENT_STA_GOT_IP, &wifi_event_handler, NULL, NULL));
-
-    wifi_config_t wifi_config = {
-        .sta = {
-            .ssid = CONFIG_ESP_WIFI_SSID,
-            .password = CONFIG_ESP_WIFI_PASSWORD,
-        },
-    };
-
-    ESP_ERROR_CHECK(esp_wifi_set_mode(WIFI_MODE_STA));
-    ESP_ERROR_CHECK(esp_wifi_set_config(WIFI_IF_STA, &wifi_config));
-    ESP_ERROR_CHECK(esp_wifi_start());
+    wifi_init(on_wifi_connected);
 
     stats.started_us = esp_timer_get_time();
 
