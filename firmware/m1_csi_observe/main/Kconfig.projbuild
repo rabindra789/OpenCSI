@@ -1,0 +1,17 @@
+menu "WiFi Configuration"
+
+    config ESP_WIFI_SSID
+        string "WiFi SSID"
+        default "myssid"
+        help
+            SSID of the WiFi network the ESP32 will connect to.
+            Set this to your own network name via 'idf.py menuconfig'.
+
+    config ESP_WIFI_PASSWORD
+        string "WiFi Password"
+        default "mypassword"
+        help
+            Password for the WiFi network.
+            Set this to your own password via 'idf.py menuconfig'.
+
+endmenu

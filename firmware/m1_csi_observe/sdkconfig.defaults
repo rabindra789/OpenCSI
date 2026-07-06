@@ -1,0 +1,5 @@
+# OpenCSI M1 — CSI Observer
+# Placeholder WiFi credentials — replace via 'idf.py menuconfig'
+# sdkconfig (the actual generated config) is gitignored.
+CONFIG_ESP_WIFI_SSID="changeme"
+CONFIG_ESP_WIFI_PASSWORD="changeme"
