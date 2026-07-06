@@ -15,12 +15,12 @@ Full experiment reports are available in the [`experiments/`](experiments/) dire
 
 ```
 experiments/         Peer-reviewed experiment reports, raw data, and analysis
-firmware/            ESP-IDF firmware projects for each milestone and experiment
+firmware/            ESP-IDF firmware projects + reusable framework components
 captures/            Serial capture evidence files
 docs/                Development environment and project documentation
 ```
 
-See [`docs/DEVELOPMENT-ENVIRONMENT.md`](docs/DEVELOPMENT-ENVIRONMENT.md) for setup instructions.
+See [`docs/DEVELOPMENT-ENVIRONMENT.md`](docs/DEVELOPMENT-ENVIRONMENT.md) for setup instructions and [`docs/FRAMEWORK.md`](docs/FRAMEWORK.md) for firmware architecture.
 
 ## Milestones
 
