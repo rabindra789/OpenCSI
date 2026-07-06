@@ -1,8 +1,8 @@
-# OpenCSI Experiment Registry
+# OpenCSI Research Timeline
 
 ## Overview
 
-This directory is the central index of all OpenCSI research. Every experiment investigates one specific question about the ESP32 CSI subsystem through controlled, reproducible measurements.
+This directory traces the arc of all OpenCSI research. Every experiment investigates one specific question about the ESP32 CSI subsystem through controlled, reproducible measurements.
 
 ## Lifecycle
 
@@ -13,7 +13,7 @@ This directory is the central index of all OpenCSI research. Every experiment in
 | **Running** | Data collection in progress |
 | **Analyzed** | Raw data processed, observations documented |
 | **Reviewed** | Results reviewed, discussion validated |
-| **Published** | Full report finalized with limitations and future work |
+| **Peer Reviewed (Internal)** | Full report finalized with limitations and future work |
 | **Archived** | Experiment closed, raw evidence preserved |
 
 ## Principles
@@ -27,13 +27,13 @@ This directory is the central index of all OpenCSI research. Every experiment in
 
 ---
 
-## Full Registry
+## Research Timeline
 
-| ID | Title | Status | Summary | Hardware | ESP-IDF | Report | Data | Firmware | Date |
-|----|-------|--------|---------|----------|---------|--------|------|----------|------|
-| EXP-001 | CSI Callback Source Characterization | **Published** | CSI callbacks increased when packets were addressed to ESP32; traffic between other devices did not produce a comparable increase | ESP32 DevKit V1 (ESP32-D0WD-V3 rev3.0) | v5.3.2 | [report](EXP-001/report.md) | [data](EXP-001/data/) | [m2_exp_001](../firmware/m2_exp_001/) | 2026-07-06 |
-| EXP-002 | CSI Callback Rate Characterization | **Planned** | *pending* | — | — | — | — | — | — |
-| EXP-003 | *(available)* | Proposed | — | — | — | — | — | — | — |
+| Date | ID | Title | Status |
+|------|----|-------|--------|
+| 2026-07-06 | [EXP-001](EXP-001/report.md) | CSI Callback Source Characterization | Peer Reviewed (Internal) |
+| — | EXP-002 | CSI Callback Rate Characterization | Planned |
+| — | EXP-003 | *(available)* | Proposed |
 
 ---
 
@@ -42,7 +42,7 @@ This directory is the central index of all OpenCSI research. Every experiment in
 ```
 experiments/
 ├── README.md              This file — central research index
-├── EXP-001/               Published experiment
+├── EXP-001/               Peer-reviewed report
 │   ├── report.md          Full report with observations, analysis, limitations
 │   └── data/              Raw evidence organized by scenario
 ├── EXP-002/               Planned experiment
@@ -51,11 +51,11 @@ experiments/
 └── EXP-003/               (available for future work)
 ```
 
-## How to Read a Published Experiment
+## How to Read a Published Report
 
-Each published experiment contains:
+Each published report contains:
 
-1. **Metadata** — hardware, firmware, date, environment
+1. **Metadata** — author, version, hardware, firmware, date, environment
 2. **Research Question** — what the experiment investigates
 3. **Setup** — hardware, network, and firmware configuration
 4. **Procedure** — step-by-step execution
@@ -64,4 +64,4 @@ Each published experiment contains:
 7. **Discussion** — what the results suggest (hypotheses vs conclusions)
 8. **Conclusions** — what is definitively supported by the evidence
 9. **Limitations** — what the experiment does *not* claim
-10. **Future Work** — possible research directions
+10. **Future Work** — possible research directions and engineering improvements

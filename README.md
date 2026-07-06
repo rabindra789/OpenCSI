@@ -6,15 +6,15 @@ CSI sensing on ESP32 — through controlled experiments, not guesswork.
 
 | Experiment | Status | Summary |
 |---|---|---|
-| [EXP-001](experiments/EXP-001/report.md) | **Published** | Characterized CSI callback behavior under different traffic scenarios |
-| EXP-002 | Planned | CSI callback rate characterization |
+| [EXP-001](experiments/EXP-001/report.md) | **Peer Reviewed (Internal)** | CSI callbacks increased when packets addressed to ESP32; traffic between other devices did not |
+| EXP-002 | **Planned** | CSI callback rate characterization |
 
 Full experiment reports are available in the [`experiments/`](experiments/) directory.
 
 ## Project Structure
 
 ```
-experiments/         Published experiment reports, raw data, and analysis
+experiments/         Peer-reviewed experiment reports, raw data, and analysis
 firmware/            ESP-IDF firmware projects for each milestone and experiment
 captures/            Serial capture evidence files
 docs/                Development environment and project documentation

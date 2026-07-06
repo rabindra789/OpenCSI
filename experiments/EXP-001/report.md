@@ -6,12 +6,13 @@
 |-------|-------|
 | **Experiment ID** | EXP-001 |
 | **Title** | CSI Callback Source Characterization |
-| **Status** | Published |
+| **Status** | Peer Reviewed (Internal) |
+| **Report Version** | 1.0 |
 | **Hardware** | ESP32 DevKit V1 (ESP32-D0WD-V3 rev3.0) |
 | **ESP-IDF Version** | v5.3.2 |
 | **Firmware Commit** | `6a92f66` (M1 baseline) + `firmware/m2_exp_001/` |
 | **Date** | 2026-07-06 |
-| **Author** | OpenCSI |
+| **Author** | Rabindra Kumar Meher |
 | **Environment** | Indoor, residential, single room |
 
 ## Research Question
@@ -188,39 +189,13 @@ The following quantitative results were obtained from the five scenarios:
 
 ## Discussion
 
-### Relationship between traffic and CSI callbacks
+**Traffic and callbacks**: CSI callbacks increased only for packets addressed to the ESP32. Likely explanation — the WiFi driver filters by destination MAC before invoking the callback. Traffic between other devices is received at PHY but filtered at MAC. Not directly verified.
 
-Under the tested configuration, CSI callbacks increased when packets were addressed to the ESP32. Traffic between other devices on the same network did not produce a comparable increase.
+**Callback pairs (identical rx_seq)**: With `dump_ack_en=true`, the ESP32 likely generates CSI for both the received packet and its ACK. The ACK is a distinct PHY reception sharing the same rx_seq (it acknowledges that sequence number). Alternatives (double processing, retransmission) not ruled out.
 
-**Hypothesis**: The ESP32 WiFi driver filters received packets by destination MAC address before invoking the CSI callback. Only unicast packets addressed to the ESP32's station MAC, broadcast frames, and multicast frames (if subscribed) generate CSI callbacks. Packets between other stations are received at the PHY layer but filtered at the MAC layer before reaching the CSI callback.
+**HT packets**: Observed during download/video but not idle/ping. Mechanism unknown. Payload 384 bytes vs 128 bytes non-HT. No hypothesis proposed.
 
-This hypothesis is consistent with the observed data but has not been directly verified. Possible approaches for verification include enabling WiFi promiscuous mode and observing whether the callback rate changes, or examining the ESP-IDF WiFi driver source code.
-
-### Callback pairs with identical rx_seq
-
-Paired callbacks with identical rx_seq and ~1ms spacing were observed during the ping-esp32 scenario.
-
-**Hypothesis**: With `dump_ack_en=true`, the ESP32 generates CSI for both the received packet and the acknowledgment (ACK) frame transmitted in response. The ACK is a distinct frame with its own PHY reception, so it generates a separate CSI callback. Both share the same rx_seq because the ACK acknowledges that specific sequence number.
-
-Alternative explanations include the same packet being processed twice by the CSI subsystem, or a retransmission being counted as a separate callback. These alternatives have not been ruled out.
-
-### HT packets during download and video
-
-HT CSI packets were observed during the download and video scenarios but not during idle or ping. The mechanism responsible is currently unknown.
-
-**Observations only**:
-- HT packets had sig_mode=1 (HT), mcs=0 or 1, and cwb=0, 1, or 2
-- HT CSI payload length was 384 bytes vs 128 bytes for non-HT
-- HT packets occurred at low rx_seq values (3-17)
-- HT packets appeared alongside non-HT packets with similar timestamps
-
-**No explanation is proposed at this time.** The conditions for HT CSI generation may relate to HT Information Elements in AP beacons, association/reassociation frames, or HT-format data packets. Further experiments with controlled HT parameters are needed.
-
-### The ping-router result
-
-The ping-router scenario produced fewer callbacks (6) than idle (13). This may reflect natural variance in callback timing rather than a systematic difference. Both values come from a single 60-second observation. AP beacons are typically transmitted at 100 TU intervals (102.4 ms), yielding approximately 586 beacons per 60 seconds. The fact that only 6-13 of these generated CSI callbacks suggests that the ESP32 applies additional filtering beyond destination MAC address.
-
-**Hypothesis**: The ESP32 may only generate CSI for a subset of received packets based on packet type (e.g., only QoS data frames, or only frames with specific frame control fields). This could explain why only a small fraction of the ~586 expected beacons generated callbacks.
+**Ping-router (6 vs 13 idle)**: Both single observations; natural variance in AP beacon timing may account for the difference. Only 6-13 of ~586 expected beacons generated callbacks, suggesting the ESP32 applies additional filtering beyond destination MAC.
 
 ## Conclusions
 
@@ -256,21 +231,19 @@ This experiment has the following limitations:
 
 ## Future Work
 
-The following research directions are possible based on this experiment:
+### Experiments
 
-- **Callback rate scaling**: Vary the incoming packet rate to the ESP32 and measure the CSI callback response curve. Determine whether the relationship is linear and identify any saturation point.
+- **Callback rate scaling**: Vary incoming packet rate to find saturation point.
+- **HT packet investigation**: Determine triggers for HT CSI generation.
+- **ACK vs data frame isolation**: Disable `dump_ack_en` to isolate ACK contribution.
+- **MAC filter characterization**: Test broadcast, multicast, promiscuous mode.
+- **Multi-channel / multi-environment testing**: Repeat on channels 1, 6, 11 and in office, outdoor, multi-AP settings.
+- **Statistical replication**: Repeat idle and ping to establish confidence intervals.
 
-- **HT packet investigation**: Design a controlled experiment to determine what specifically triggers HT CSI generation. Possible variables: HT capabilities in AP beacons, HT-format data frames, channel width (20 vs 40 MHz).
+### Engineering
 
-- **ACK vs data frame isolation**: Disable `dump_ack_en` and compare callback rates to isolate the contribution of ACK frames.
-
-- **MAC filter characterization**: Test broadcast, multicast, and promiscuous mode to understand the ESP32's CSI callback filtering logic.
-
-- **Multiple channel testing**: Repeat the experiment on different WiFi channels (1, 6, 11) and in non-overlapping channel conditions.
-
-- **Multiple environment testing**: Repeat the experiment in different physical environments (office, outdoor, multi-AP) to characterize environmental effects.
-
-- **Statistical replication**: Repeat the idle and ping scenarios multiple times to measure variance and establish confidence intervals.
+- **Structured logging**: Replace ad-hoc CSV with machine-parseable output format.
+- **Higher UART throughput**: Increase baud rate to accommodate denser callback rates.
 
 ## Raw Evidence
 
