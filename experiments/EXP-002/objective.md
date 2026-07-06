@@ -10,7 +10,7 @@ Check if CSI callback frequency scales linearly with incoming traffic or hits a 
 
 ## Hypothesis
 
-CSI callback frequency will scale proportionally with incoming packet rate up to a saturation point set by the WiFi task processing capacity or the serial output bandwidth. Beyond this point, callbacks may be dropped, merged, or show unusual timing.
+We expect CSI callback frequency to scale with incoming packet rate up to a saturation point. This point may be set by the WiFi task processing capacity or the serial output bandwidth. Beyond this, callbacks may be dropped, merged, or show unusual timing.
 
 ## Setup
 
@@ -43,7 +43,7 @@ Same instrumentation firmware as EXP-001 (`firmware/m2_exp_001/`):
 
 ### Stimulus
 
-A Python script (`experiments/EXP-002/data/udp_sender.py`) sends UDP packets to the ESP32 on port 9999 at controlled rates. The ESP32's LWIP stack receives these packets and the WiFi hardware generates CSI callbacks. The higher-layer ICMP Port Unreachable response may trigger additional ACK-based CSI callbacks via `dump_ack_en`.
+We use a Python script (`experiments/EXP-002/data/udp_sender.py`) to send UDP packets to the ESP32 on port 9999 at controlled rates. The WiFi hardware generates CSI callbacks for each packet. The ICMP Port Unreachable response from the ESP32 may trigger additional ACK-based callbacks via `dump_ack_en`.
 
 ## Procedure
 

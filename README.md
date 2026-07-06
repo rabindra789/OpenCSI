@@ -2,7 +2,7 @@
 
 CSI sensing experiments on the ESP32.
 
-## Research Progress
+## Experiments
 
 | Experiment | Status | Summary |
 |---|---|---|

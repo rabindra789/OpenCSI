@@ -2,7 +2,7 @@
 
 ## Goal
 
-Identify which WiFi traffic types generate CSI callbacks on the ESP32 and determine whether the observed 1-3 callbacks/second is caused by network activity or firmware behavior.
+Find out which WiFi traffic types generate CSI callbacks on the ESP32. Check if the observed 1-3 callbacks per second is caused by network activity or firmware behavior.
 
 ## Hardware
 
@@ -113,19 +113,19 @@ Each scenario was run independently with a fresh firmware build/flash cycle:
 
 ### Hypotheses
 
-1. The ESP32 CSI subsystem generates callbacks for packets whose destination MAC address matches the ESP32's station MAC address, and possibly for broadcast/multicast frames. Traffic between other devices does not match this filter.
+1. We think the ESP32 generates CSI callbacks for packets whose destination MAC matches its own station MAC. Broadcast and multicast frames may also trigger callbacks. Traffic between other devices does not match this filter.
 
-2. With `dump_ack_en=true`, the ESP32 generates a CSI callback for both the received packet and the acknowledgment (ACK) transmitted in response, producing the observed same-rx_seq pairs.
+2. With `dump_ack_en=true`, the ESP32 may generate CSI for both the received packet and the ACK it sends in response. This would explain the same-rx_seq pairs we observed.
 
-3. HT CSI callbacks may be triggered by HT-format management frames (e.g., beacons with HT Information Elements) that the AP transmits when it detects channel activity. The low rx_seq values suggest these are association or reassociation frames.
+3. HT CSI callbacks may come from HT-format management frames. The AP may send these when it detects channel activity. The low rx_seq values suggest these could be association or reassociation frames.
 
-4. The background callback rate (~0.2/s) is determined by AP beacon interval and periodic management frames rather than a firmware-imposed limit. The rate increased proportionally during active traffic to the ESP32.
+4. The background callback rate (~0.2/s) likely comes from AP beacons and periodic management frames, not a firmware-imposed limit. We saw the rate increase when we sent traffic to the ESP32.
 
 ## Discussion
 
 ### Relationship between traffic and CSI callbacks
 
-Under the tested configuration, CSI callbacks increased significantly when packets were addressed to the ESP32. Traffic between other devices did not produce a comparable increase in callbacks. Additional experiments are required to characterize broadcast, multicast, management, and promiscuous-mode behavior.
+In our tests, CSI callbacks increased when packets were addressed to the ESP32. Traffic between other devices did not produce a comparable increase. We need more experiments to understand broadcast, multicast, management, and promiscuous-mode behavior.
 
 ### Callback pairs with identical rx_seq
 
@@ -137,17 +137,17 @@ HT CSI packets were observed during the download and video scenarios but not dur
 
 ### The ping-router result
 
-The ping-router scenario produced fewer callbacks (6) than idle (13). This is within the expected variance for a 60s observation window given the non-deterministic timing of AP beacon transmissions and the small sample size. Repeating the idle measurement would likely yield a range of 6-15 callbacks per 60s.
+Ping to the router produced fewer callbacks (6) than idle (13). This could be normal variance. With only one 60-second measurement per scenario, we expect some fluctuation. Repeating the idle test would likely give a range of 6-15 callbacks per 60s.
 
 ## Conclusions
 
-1. **Callbacks increase with traffic addressed to the ESP32**. Under these test conditions, CSI callbacks were 3-6x higher when the ESP32 was actively pinged compared to idle. Traffic between other devices did not increase the callback rate.
+1. Callbacks increase when we send traffic to the ESP32. In our tests, CSI callbacks were 3-6x higher when we pinged the ESP32 compared to idle. Traffic between other devices did not increase the callback rate.
 
-2. **The background callback rate (~0.2/s) reflects ambient AP activity** (beacons, ARP, management frames). This is not a firmware-imposed floor or ceiling.
+2. The background callback rate (~0.2/s) reflects ambient AP activity. We did not find evidence of a firmware-imposed floor or ceiling.
 
-3. **HT CSI data is available** (384 bytes per packet vs 128 for non-HT) but the conditions that trigger it require further investigation.
+3. HT CSI data is available (384 bytes per packet vs 128 for non-HT). We need more investigation to understand what triggers it.
 
-4. **Antenna diversity is not a factor** on this hardware — all callbacks on ant0 with a single PCB trace antenna.
+4. Antenna diversity is not a factor on this hardware — all callbacks on ant0 with a single PCB trace antenna.
 
 ## Raw Data
 

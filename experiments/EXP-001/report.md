@@ -82,7 +82,7 @@ Source: `firmware/m2_exp_001/main/main.c`
 
 ## Procedure
 
-Each scenario was executed independently with a dedicated firmware build and flash cycle:
+We executed each scenario independently with a dedicated firmware build and flash cycle:
 
 1. Update `CONFIG_EXP_SCENARIO_LABEL` in sdkconfig
 2. Run `idf.py reconfigure && idf.py build`
@@ -197,17 +197,17 @@ Each scenario was executed independently with a dedicated firmware build and fla
 
 ## Conclusions
 
-1. **Under these test conditions, CSI callbacks increased when the ESP32 received packets addressed to it**. Ping to ESP32 produced 3-6x more callbacks than idle. Traffic between other network devices did not increase the callback rate.
+1. Under our test conditions, CSI callbacks increased when the ESP32 received packets addressed to it. Ping to ESP32 produced 3-6x more callbacks than idle. Traffic between other devices did not increase the callback rate.
 
-2. **The background callback rate (~0.2/s in this environment) reflects ambient WiFi activity**. It is not a firmware-imposed floor or ceiling. The rate changed when traffic directed at the ESP32 was introduced.
+2. The background callback rate (~0.2/s in this environment) reflects ambient WiFi activity. We did not find evidence of a firmware-imposed floor or ceiling. The rate changed when we sent traffic to the ESP32.
 
-3. **HT CSI data is available on this hardware** (384 bytes per packet vs 128 for non-HT), but the conditions that trigger HT CSI generation are not yet understood.
+3. HT CSI data is available on this hardware (384 bytes per packet vs 128 for non-HT). We have not yet identified what triggers HT CSI generation.
 
-4. **Antenna diversity was not observed** — all callbacks reported antenna 0 on a board with a single PCB trace antenna.
+4. We did not observe antenna diversity. All callbacks reported antenna 0 on this board with a single PCB trace antenna.
 
 ## Limitations
 
-This experiment has the following limitations:
+Our experiment has these limitations:
 
 1. **Single hardware instance**: One ESP32 DevKit V1 board. Results may differ with other ESP32 variants (ESP32-S2, ESP32-C3, ESP32-S3) or board designs with external antennas.
 
@@ -269,7 +269,7 @@ The consolidated CSV file contains one row per CSI callback from all scenarios w
 
 ## Firmware
 
-The experiment firmware is at `firmware/m2_exp_001/main/main.c`. It is a minimal instrumentation layer over the M1 baseline (`firmware/m1_csi_observe/main/main.c`). Key components:
+The experiment firmware is at `firmware/m2_exp_001/main/main.c`. We built it as a minimal instrumentation layer over the M1 baseline (`firmware/m1_csi_observe/main/main.c`). Key components:
 
 - CSI callback with full field dump (preserved from M1)
 - CSV line appended to each callback

@@ -1,8 +1,7 @@
 # Development Environment — OpenCSI
 
-This document describes the minimal, reproducible Windows development environment
-for OpenCSI. Every contributor should be able to follow these steps and arrive at
-an identical toolchain.
+This guide helps you set up the Windows development environment for OpenCSI.
+Follow these steps to get the same toolchain we use.
 
 ## Philosophy
 
@@ -93,8 +92,7 @@ Install the matching driver.
 
 ## Phase B — Install ESP-IDF
 
-We install ESP-IDF **v5.3.2** — the last v5.x LTS release. It is stable,
-well-documented, and fully supports ESP32.
+We install ESP-IDF **v5.3.2** — the last v5.x LTS release.
 
 ### B1 — Create install directory
 

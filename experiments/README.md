@@ -51,9 +51,9 @@ experiments/
 └── EXP-003/               (available for future work)
 ```
 
-## How to Read a Published Report
+## How to Read an Experiment Report
 
-Each published report contains:
+Each report contains:
 
 1. **Metadata** — author, version, hardware, firmware, date, environment
 2. **Research Question** — what the experiment investigates

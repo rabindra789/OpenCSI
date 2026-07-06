@@ -7,7 +7,7 @@ WiFi: Station mode, connected to 2.4GHz AP (WPA2-PSK, channel 1, 20MHz)
 
 | Field              | Type      | Observed Value    | Notes |
 |--------------------|-----------|-------------------|-------|
-| `mac`              | uint8_t[6]| `00:00:00:00:00:00` | Source MAC — all zeros observed in every packet. May be a hardware limitation for non-HT/ACK frames. |
+| `mac`              | uint8_t[6]| `00:00:00:00:00:00` | Source MAC is always zero. This may be a hardware limitation for non-HT or ACK frames. |
 | `dmac`             | uint8_t[6]| `a8:42:e3:5b:f4:20` | Destination MAC — always our ESP32's own station MAC. |
 | `first_word_invalid` | bool    | `1`               | First 4 bytes of CSI buf are invalid (hardware limitation). Always observed as true. |
 | `len`              | uint16_t  | `128`             | Total CSI data length in bytes. Always 128 for HT20 packets. |
@@ -54,11 +54,11 @@ For non-HT (legacy) packets, the CSI data comes from the Legacy Long Training Fi
 
 ## Key Findings
 
-1. **All observed CSI packets are non-HT (802.11b/g) frames at rate 11 Mbps.** No HT (802.11n) packets were captured via CSI, likely because the ESP32's WiFi driver prioritizes CSI capture for certain packet types, or the AP's HT traffic doesn't reliably trigger the CSI callback.
+1. **All observed CSI packets are non-HT (802.11b/g) frames at rate 11 Mbps.** We did not capture any HT (802.11n) packets via CSI. One possible explanation: the ESP32's WiFi driver only captures CSI for certain packet types. Another: the AP's HT traffic does not trigger the CSI callback reliably.
 
 2. **The source MAC is always zero** (`00:00:00:00:00:00`). This may be a known hardware limitation — the CSI callback may not populate the source MAC correctly for certain frame types (ACKs, NULL func frames).
 
-3. **Packet rate is low** — approximately 1-3 CSI-triggering packets per second. This suggests only specific frame types (possibly ACKs sent by the ESP32 itself, or and/or NULL function data frames from the AP) pass through the CSI pipeline.
+3. **Packet rate is low** — approximately 1-3 CSI-triggering packets per second. This suggests only specific frame types pass through the CSI pipeline. Possible candidates: ACKs sent by the ESP32 itself, or NULL function data frames from the AP.
 
 4. **CSI data length is fixed at 128 bytes** for this configuration (HT20, sig_mode=0). The format is consistent: first 4 bytes invalid, then 62 subcarrier I/Q pairs with some zero padding.
 
@@ -70,4 +70,4 @@ For non-HT (legacy) packets, the CSI data comes from the Legacy Long Training Fi
 
 - Investigate why no HT packets trigger CSI. May require setting a specific CSI config or ensuring the AP sends HT packets to the station.
 - Consider adding promiscuous mode to capture CSI from all nearby traffic, not just frames addressed to the ESP32.
-- The source MAC issue should be investigated — it might be resolved by filtering for specific frame types.
+- We should investigate the source MAC issue. It might be resolved by filtering for specific frame types.
