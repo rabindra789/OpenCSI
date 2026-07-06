@@ -8,9 +8,11 @@
 #include "esp_event.h"
 #include "esp_log.h"
 #include "nvs_flash.h"
+#include "driver/gpio.h"
 #include "sdkconfig.h"
 
 #define TAG "CSI_OBSERVE"
+#define LED_GPIO GPIO_NUM_2
 
 static void csi_callback(void *ctx, wifi_csi_info_t *data)
 {
@@ -86,8 +88,22 @@ static void wifi_event_handler(void *arg, esp_event_base_t event_base,
     }
 }
 
+static void blink_task(void *pvParameter)
+{
+    gpio_reset_pin(LED_GPIO);
+    gpio_set_direction(LED_GPIO, GPIO_MODE_OUTPUT);
+    while (1) {
+        gpio_set_level(LED_GPIO, 0);
+        vTaskDelay(pdMS_TO_TICKS(500));
+        gpio_set_level(LED_GPIO, 1);
+        vTaskDelay(pdMS_TO_TICKS(500));
+    }
+}
+
 void app_main(void)
 {
+    xTaskCreate(blink_task, "blink", 2048, NULL, 1, NULL);
+
     esp_err_t ret = nvs_flash_init();
     if (ret == ESP_ERR_NVS_NO_FREE_PAGES || ret == ESP_ERR_NVS_NEW_VERSION_FOUND) {
         ESP_ERROR_CHECK(nvs_flash_erase());
