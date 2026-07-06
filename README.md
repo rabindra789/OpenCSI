@@ -1,6 +1,6 @@
 # OpenCSI
 
-CSI sensing on ESP32 — through controlled experiments, not guesswork.
+CSI sensing experiments on the ESP32.
 
 ## Research Progress
 

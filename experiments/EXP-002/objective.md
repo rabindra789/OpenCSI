@@ -6,11 +6,11 @@ How does incoming packet rate affect CSI callback frequency?
 
 ## Goal
 
-Determine whether CSI callback frequency scales linearly with incoming traffic or reaches a hardware or driver limitation.
+Check if CSI callback frequency scales linearly with incoming traffic or hits a hardware or driver limit.
 
 ## Hypothesis
 
-CSI callback frequency will scale proportionally with incoming packet rate up to a saturation point determined by the WiFi task processing capacity or the serial output bandwidth. Beyond this point, callbacks may be dropped, merged, or exhibit timing anomalies.
+CSI callback frequency will scale proportionally with incoming packet rate up to a saturation point set by the WiFi task processing capacity or the serial output bandwidth. Beyond this point, callbacks may be dropped, merged, or show unusual timing.
 
 ## Setup
 

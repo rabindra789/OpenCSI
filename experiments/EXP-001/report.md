@@ -19,11 +19,11 @@
 
 What WiFi traffic actually generates CSI callbacks on the ESP32?
 
-Current observations from M1 showed approximately 1-3 CSI callbacks per second, all non-HT frames. It was not known which network traffic was responsible for these callbacks or whether additional traffic would increase the rate.
+Current observations from M1 showed approximately 1-3 CSI callbacks per second, all non-HT frames. We did not know which network traffic caused these callbacks or whether more traffic would increase the rate.
 
 ## Goal
 
-Identify the relationship between network activity and CSI callback generation by testing multiple traffic scenarios independently.
+Understand how different types of network traffic affect CSI callback generation by testing multiple scenarios.
 
 ## Experimental Setup
 
@@ -177,8 +177,6 @@ Each scenario was executed independently with a dedicated firmware build and fla
 
 ## Results
 
-The following quantitative results were obtained from the five scenarios:
-
 1. **Traffic type and callback count**: Scenarios with traffic not addressed to the ESP32 (idle, ping-router, download, video) produced 6-13 callbacks per 60 seconds (0.09-0.20/s). The scenario with traffic addressed to the ESP32 (ping-esp32) produced 41 callbacks (0.63/s), a 3-6x increase.
 
 2. **Callback-to-packet ratio**: During the ping-esp32 scenario, Windows `ping -t` sends one ICMP echo request per second. Over ~28 seconds of active CSI time, approximately 28 pings were sent. The firmware recorded 41 callbacks, yielding approximately 1.5 callbacks per ping.
@@ -189,7 +187,7 @@ The following quantitative results were obtained from the five scenarios:
 
 ## Discussion
 
-**Traffic and callbacks**: CSI callbacks increased only for packets addressed to the ESP32. Likely explanation — the WiFi driver filters by destination MAC before invoking the callback. Traffic between other devices is received at PHY but filtered at MAC. Not directly verified.
+**Traffic and callbacks**: CSI callbacks increased only for packets addressed to the ESP32. One possible explanation — the WiFi driver filters by destination MAC before invoking the callback. Traffic between other devices is received at PHY but filtered at MAC. We did not verify this directly.
 
 **Callback pairs (identical rx_seq)**: With `dump_ack_en=true`, the ESP32 likely generates CSI for both the received packet and its ACK. The ACK is a distinct PHY reception sharing the same rx_seq (it acknowledges that sequence number). Alternatives (double processing, retransmission) not ruled out.
 

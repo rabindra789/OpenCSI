@@ -2,7 +2,7 @@
 
 ## Overview
 
-This directory traces the arc of all OpenCSI research. Every experiment investigates one specific question about the ESP32 CSI subsystem through controlled, reproducible measurements.
+This directory tracks all OpenCSI research. Each experiment answers one specific question about the ESP32 CSI subsystem through reproducible measurements.
 
 ## Lifecycle
 
