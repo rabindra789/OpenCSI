@@ -1,1 +1,1 @@
-idf_component_register(SRCS "main.c" INCLUDE_DIRS "." REQUIRES wifi csi esp_timer driver)
+idf_component_register(SRCS "main.c" INCLUDE_DIRS "." REQUIRES wifi csi transport esp_timer driver)
