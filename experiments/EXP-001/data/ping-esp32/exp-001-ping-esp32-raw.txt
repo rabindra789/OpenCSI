@@ -1,0 +1,1915 @@
+T)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7176
+load:0x400ÿets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7176
+load:0x40078000,len:15564
+ho 0 tail 12 room 4
+load:0x40080400,len:4
+load:0x40080404,len:3904
+entry 0x40080640
+I (31) boot: ESP-IDF v5.3.2 2nd stage bootloader
+I (31) boot: compile time Jul  6 2026 12:17:19
+I (31) boot: Multicore bootloader
+I (35) boot: chip revision: v3.0
+I (39) boot.esp32: SPI Speed      : 40MHz
+I (44) boot.esp32: SPI Mode       : DIO
+I (48) boot.esp32: SPI Flash Size : 2MB
+I (53) boot: Enabling RNG early entropy source...
+I (58) boot: Partition Table:
+I (62) boot: ## Label            Usage          Type ST Offset   Length
+I (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (77) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (84) boot:  2 factory          factory app      00 00 00010000 00100000
+I (92) boot: End of partition table
+I (96) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=19624h (103972) map
+I (140) esp_image: segment 1: paddr=0002964c vaddr=3ffb0000 size=03f2ch ( 16172) load
+I (146) esp_image: segment 2: paddr=0002d580 vaddr=40080000 size=02a98h ( 10904) load
+I (151) esp_image: segment 3: paddr=00030020 vaddr=400d0020 size=84bb0h (543664) map
+I (340) esp_image: segment 4: paddr=000b4bd8 vaddr=40082a98 size=14bd4h ( 84948) load
+I (386) boot: Loaded app from partition at offset 0x10000
+I (386) boot: Disabling RNG early entropy source...
+I (398) cpu_start: Multicore app
+I (407) cpu_start: Pro cpu start user code
+I (407) cpu_start: cpu freq: 160000000 Hz
+I (407) app_init: Application information:
+I (410) app_init: Project name:     exp_001
+I (415) app_init: App version:      6a92f66-dirty
+I (420) app_init: Compile time:     Jul  6 2026 12:31:28
+I (426) app_init: ELF file SHA256:  605971a5f...
+I (431) app_init: ESP-IDF:          v5.3.2
+I (436) efuse_init: Min chip rev:     v0.0
+I (441) efuse_init: Max chip rev:     v3.99 
+I (446) efuse_init: Chip rev:         v3.0
+I (451) heap_init: Initializing. RAM available for dynamic allocation:
+I (458) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM
+I (464) heap_init: At 3FFB85E0 len 00027A20 (158 KiB): DRAM
+I (470) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM
+I (476) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM
+I (483) heap_init: At 4009766C len 00008994 (34 KiB): IRAM
+I (491) spi_flash: detected chip: generic
+I (494) spi_flash: flash io: dio
+W (498) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.
+I (512) main_task: Started on CPU0
+I (522) main_task: Calling app_main()
+I (522) gpio: GPIO[2]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 
+I (592) wifi:wifi driver task: 3ffc1168, prio:23, stack:6656, core=0
+I (612) wifi:wifi firmware version: b0fd6006b
+I (612) wifi:wifi certification version: v7.0
+I (612) wifi:config NVS flash: enabled
+I (612) wifi:config nano formating: disabled
+I (612) wifi:Init data frame dynamic rx buffer num: 32
+I (622) wifi:Init static rx mgmt buffer num: 5
+I (622) wifi:Init management short buffer num: 32
+I (632) wifi:Init dynamic tx buffer num: 32
+I (632) wifi:Init static rx buffer size: 2212
+I (632) wifi:Init static rx buffer num: 10
+I (642) wifi:Init dynamic rx buffer num: 32
+I (642) wifi_init: rx ba win: 6
+I (652) wifi_init: accept mbox: 6
+I (652) wifi_init: tcpip mbox: 32
+I (652) wifi_init: udp mbox: 6
+I (662) wifi_init: tcp mbox: 6
+I (662) wifi_init: tcp tx win: 5760
+I (662) wifi_init: tcp rx win: 5760
+I (672) wifi_init: tcp mss: 1440
+I (672) wifi_init: WiFi IRAM OP enabled
+I (682) wifi_init: WiFi RX IRAM OP enabled
+W (682) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2
+I (692) phy_init: phy_version 4840,02e0d70,Sep  2 2024,19:39:07
+W (782) phy_init: saving new calibration data because of checksum failure, mode(0)
+I (812) wifi:mode : sta (a8:42:e3:5b:f4:20)
+I (812) wifi:enable tsf
+=== EXP-001 START [ping-esp32] duration=60s ===
+WiFi connecting to SSID: Rabindra
+I (812) main_task: Returned from app_main()
+WiFi started. Connecting...
+Disconnected. Reconnecting...
+I (3292) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1, snd_ch_cfg:0x0
+I (3292) wifi:state: init -> auth (0xb0)
+I (4312) wifi:state: auth -> init (0x200)
+I (4322) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1, snd_ch_cfg:0x0
+Disconnected. Reconnecting...
+[STATS] No CSI callbacks yet (5 s elapsed)
+Disconnected. Reconnecting...
+Disconnected. Reconnecting...
+I (9232) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1, snd_ch_cfg:0x0
+I (9232) wifi:state: init -> auth (0xb0)
+I (10242) wifi:state: auth -> init (0x200)
+I (10252) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1, snd_ch_cfg:0x0
+Disconnected. Reconnecting...
+Disconnected. Reconnecting...
+I (12712) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1, snd_ch_cfg:0x0
+I (12712) wifi:state: init -> auth (0xb0)
+I (13732) wifi:state: auth -> init (0x200)
+I (13742) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1, snd_ch_cfg:0x0
+Disconnected. Reconnecting...
+[STATS] No CSI callbacks yet (15 s elapsed)
+Disconnected. Reconnecting...
+I (16202) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1, snd_ch_cfg:0x0
+I (16202) wifi:state: init -> auth (0xb0)
+I (17302) wifi:state: auth -> init (0x200)
+I (17312) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1, snd_ch_cfg:0x0
+Disconnected. Reconnecting...
+Disconnected. Reconnecting...
+I (19732) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1, snd_ch_cfg:0x0
+I (19732) wifi:state: init -> auth (0xb0)
+I (19742) wifi:state: auth -> assoc (0x0)
+I (19742) wifi:state: assoc -> run (0x10)
+I (19792) wifi:connected with Rabindra, aid = 1, channel 1, BW20, bssid = 8a:da:0c:b9:08:43
+I (19792) wifi:security: WPA2-PSK, phy: bgn, rssi: -84
+I (19792) wifi:pm start, type: 1
+
+I (19792) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us
+I (19822) wifi:<ba-add>idx:0 (ifx:0, 8a:da:0c:b9:08:43), tid:0, ssn:0, winSize:64
+I (19882) wifi:dp: 2, bi: 102400, li: 4, scale listen interval from 307200 us to 409600 us
+I (19882) wifi:AP's beacon interval = 102400 us, DTIM period = 2
+[STATS] No CSI callbacks yet (25 s elapsed)
+I (32802) esp_netif_handlers: sta ip: 192.168.29.140, mask: 255.255.255.0, gw: 192.168.29.1
+Connected. IP: 192.168.29.140
+Enabling CSI...
+CSI enabled.
+[STATS] No CSI callbacks yet (35 s elapsed)
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 10
+payload_len: 14
+rx_ctrl:
+  rssi: -85 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -96 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 25827143 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 e9 f5 ee f8 f4 fc f9 fe ff 00 06 02 0a 04 0b 07 0e 07 11 07 13 0a 14 0d 14 0d 12 0d
+0f 0b 0c 07 09 05 06 03 04 00 02 fd 02 fa 03 f7 02 f6 04 f6 04 f7 01 fe 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 02 fe 0b fa 0d f7 11 f5 14 f4 16 f4 18 f3 1b f1 1e f2 1f f5 20 f4
+1f f5 1c f9 18 fa 12 fa 0e f9 08 f9 00 f8 f8 f5 f1 f4 ec f4 e9 f5 e7 f6 e5 f6 e0 f9 dc f8 dc f4
+[STATS] No CSI callbacks yet (45 s elapsed)
+============
+CSV,0,10,-85,11,0,0,0,0,-96,1,25827143,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 2994
+payload_len: 14
+rx_ctrl:
+  rssi: -80 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -96 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 27296992 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 17 05 14 05 10 02 0a fe 03 fb ff f7 fd f1 fe ec fe e9 fb e6 fb e5 fd e6 fd e8 fe e8
+02 e8 01 ed fe f0 fd f3 fb f5 f8 f8 f6 f9 f4 f8 f2 f6 f4 f4 f7 f2 fe fc 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 02 04 0b 13 0b 14 0c 16 0c 19 0a 1e 08 21 07 22 06 24 05 27 04 27
+02 27 01 25 00 21 03 1c 06 16 08 12 0b 0f 11 0e 17 0a 1a 07 1d 06 1f 05 21 06 24 07 24 07 24 07
+============
+CSV,1,2994,-80,11,0,0,0,0,-96,1,27296992,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 12
+payload_len: 14
+rx_ctrl:
+  rssi: -84 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -96 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 27459413 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 17 05 14 06 0d 05 05 02 ff ff fa fe f5 ff f0 ff ea fc e6 fa e7 fa ea fa ea f9 e9 f9
+ed fa f0 fc f1 fb f7 fc fc 00 fc 04 ff 06 01 09 01 0a ff 0a fe 0b ff 03 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fd fe f6 fa f4 fa ef fb e9 fa e8 f8 e9 f7 e7 f9 e2 fb e0 f9 e0 f5
+e1 f4 e3 f6 e8 f7 eb fb ed fe f3 ff fb 02 00 07 06 09 0e 0b 12 0b 16 0b 1a 0d 1b 0f 1c 0e 1e 0d
+============
+CSV,2,12,-84,11,0,0,0,0,-96,1,27459413,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3031
+payload_len: 14
+rx_ctrl:
+  rssi: -84 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -96 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 28339379 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 ea fa ed fa f1 fc f6 fd fe fe 06 00 0c 01 10 02 14 04 15 06 14 08 15 09 15 07 12 06
+10 07 0c 08 09 07 07 02 05 fe 01 fd ff fa fd f7 fe f6 ff f5 00 f3 00 fc 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 02 00 0b 01 10 00 15 ff 19 00 1a 02 1c 04 1f 05 21 05 22 03 23 02
+23 03 21 03 1a 02 13 00 0e ff 0a ff 05 fe fc fb f4 f4 f1 ef ee ef e9 f1 e4 f3 e1 ef e1 eb e2 ee
+============
+CSV,3,3031,-84,11,0,0,0,0,-96,1,28339379,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3031
+payload_len: 14
+rx_ctrl:
+  rssi: -79 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -96 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 28469845 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 ec 13 ef 11 f5 0e fb 0d 00 0b 05 07 09 08 0b 0c 0e 0f 0f 0f 0f 0f 10 11 10 12 0d 11
+0a 10 08 0f 07 0a 08 05 09 03 09 02 0b 02 0c 03 0c 04 0c 05 0c 06 03 01 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fb 01 ec 06 eb 06 e8 06 e4 05 e1 03 e0 00 df fe db fd db fb de f8
+de f7 dd f7 e1 f7 e6 fa e8 fd ec ff ee 03 ed 09 ec 0d eb 10 eb 15 eb 18 ea 18 e9 19 e7 1a e6 16
+============
+CSV,4,3031,-79,11,0,0,0,0,-96,1,28469845,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3031
+payload_len: 14
+rx_ctrl:
+  rssi: -79 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -96 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 28586041 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 05 19 03 14 03 0e 05 0a 06 05 07 ff 0a fb 0d f9 0f f7 11 f6 13 f7 15 f7 14 f7 12 f8
+11 f9 0f fa 0b fb 08 f9 06 f8 05 f6 05 f5 05 f3 06 f4 08 f4 0a f4 02 fc 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fd 04 f6 12 f5 13 f2 15 ef 16 ed 16 eb 17 e8 18 e5 19 e3 19 e1 17
+e0 15 e0 13 e4 10 e9 0f ed 0f f1 0e f7 0f fc 13 ff 15 03 17 06 19 08 1b 08 1e 0b 1f 0b 20 09 21
+============
+CSV,5,3031,-79,11,0,0,0,0,-96,1,28586041,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 14
+payload_len: 14
+rx_ctrl:
+  rssi: -83 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -96 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 28667200 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 ea f4 ee f5 f1 f7 f7 fa ff fc 07 fe 0c 04 0d 09 10 0c 11 0c 10 0c 10 0e 0f 12 0d 13
+0b 11 07 0e 05 0b 06 08 05 03 04 ff 04 fe 06 fd 08 fb 09 f9 0b fb 03 ff 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 02 fe 0a f9 0b f8 0d f5 12 f2 15 f0 16 f1 19 f4 1d f5 1f f3 20 f3
+20 f3 1d f2 1a f4 15 f7 0f f7 08 f8 01 f8 fa f8 f5 f6 f3 f4 ee f3 e9 f2 e5 f3 e0 f2 dd f1 dd f3
+============
+CSV,6,14,-83,11,0,0,0,0,-96,1,28667200,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 15
+payload_len: 14
+rx_ctrl:
+  rssi: -84 dBm
+  rate: 10
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -96 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 28667467 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 0a 15 09 12 09 0d 04 09 ff 03 fe fc fc f5 f9 f1 f8 ed fa eb fc eb fd ec fd ec fe ec
+00 ed 02 f0 00 f4 fa f9 f7 fc f9 fc f9 fe f7 01 f6 01 f5 ff f2 fe fc ff 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fc ff f1 00 f0 02 ef 04 eb 02 e6 ff e1 ff df fd de fb de fb df fc
+df fb e0 fa e3 fa e9 f9 ee fb f4 fd fa 01 fd 07 03 0d 09 11 0b 14 0d 18 0f 1b 13 1c 17 1d 16 1a
+============
+CSV,7,15,-84,10,0,0,0,0,-96,1,28667467,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 4
+payload_len: 14
+rx_ctrl:
+  rssi: -79 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -96 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 28897335 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 19 03 15 03 12 00 0c fc 06 f9 04 f4 03 f0 00 ed ff eb 01 e9 02 ea 02 ea 03 ea 03 ec
+04 ef 03 f1 02 f3 00 f5 fe f5 fb f6 f9 f7 f8 f7 f9 f4 fa f1 fc ef ff fb 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 03 03 0f 0d 11 0e 13 11 13 13 13 16 13 18 12 1a 11 1d 10 1f 0e 22
+0b 23 09 21 08 1e 0a 19 0b 14 0b 0e 0d 0b 12 09 15 06 18 04 1c 02 1e 02 21 03 23 03 22 03 21 06
+============
+CSV,8,4,-79,11,0,0,0,0,-96,1,28897335,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3073
+payload_len: 14
+rx_ctrl:
+  rssi: -84 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -96 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 29110718 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 f0 12 f5 11 f8 10 f7 0c f4 03 f7 f9 ff f7 06 f7 0a f1 0b ee 09 f1 09 ef 09 ee 08 ef
+09 ee 07 f0 03 f4 02 f7 01 fc ff ff fc 00 f8 02 f7 02 f6 01 f3 00 fc ff 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 02 ff 0b fe 0e fc 0f f7 0f f2 11 ed 13 eb 11 ed 10 f0 15 f3 1a f0
+19 ec 16 ec 15 f0 15 f5 10 f6 07 f9 00 fa fc fc f8 04 f4 07 ee 08 e8 0d e5 0f e5 11 e5 13 e6 14
+============
+CSV,9,3073,-84,11,0,0,0,0,-96,1,29110718,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3073
+payload_len: 14
+rx_ctrl:
+  rssi: -84 dBm
+  rate: 10
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -96 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 29191940 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 07 e5 05 ea 05 f0 07 f8 07 fe 05 02 04 07 01 0d 00 10 02 11 01 14 ff 15 ff 14 00 11
+01 0f fd 0f fb 0d ff 08 02 05 03 02 04 fd 05 fc 05 fc 08 fc 0b fd 03 ff 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 ff 02 fc 08 fd 0b fe 11 ff 14 ff 15 ff 19 fe 1c fc 1d fb 1f fd 1f
+fe 20 fd 20 fd 1d ff 19 fe 13 fe 0b 02 04 07 fd 08 f5 07 ee 07 ec 0a e8 0c e4 09 e1 08 df 09 de
+============
+CSV,10,3073,-84,10,0,0,0,0,-96,1,29191940,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3073
+payload_len: 14
+rx_ctrl:
+  rssi: -80 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -96 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 29332623 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 fa e3 fb e8 fb ef fb f6 fb fc f9 03 f6 08 f4 0b f0 0d ec 0e eb 0c ec 0b ed 0b ed 0b
+ef 09 f1 07 f4 04 f8 04 fc 07 fe 09 fe 0a fe 0b ff 0d fd 0f fb 0e fe 03 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 02 fc 0b ef 0d ed 0f ec 11 eb 14 eb 18 ea 1a ea 1b eb 1c eb 20 ea
+21 ed 1f f0 1b f3 17 f3 12 f1 0d f1 08 ee 03 e9 ff e6 fd e5 f9 e3 f6 e0 f6 df f6 dc f6 db f8 dd
+============
+CSV,11,3073,-80,11,0,0,0,0,-96,1,29332623,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3073
+payload_len: 14
+rx_ctrl:
+  rssi: -80 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -96 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 29441057 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 e4 fe e9 fe ee ff f4 02 fb 04 ff 08 01 0e 03 12 05 16 06 17 05 16 05 17 04 17 01 15
+ff 13 01 10 02 0d 02 0b 03 09 04 07 07 06 0b 06 0c 07 0a 09 09 0b 02 02 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fb fc ef f1 ef f0 ef ee ed ea ec e6 ec e4 ed e1 ef df f1 dd f4 dc
+f5 dc f5 de f7 e1 f8 e6 f8 eb f5 f1 f1 f4 ed f7 e8 fa e4 fd e2 fd e0 fe dd ff db 00 dc 01 dc 00
+============
+CSV,12,3073,-80,11,0,0,0,0,-96,1,29441057,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3073
+payload_len: 14
+rx_ctrl:
+  rssi: -85 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -96 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 29523584 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 15 08 14 07 0f 03 08 02 01 04 fa 03 f5 ff f3 fa f1 f6 f1 f5 f0 f3 eb f4 eb f5 ef f3
+f1 f2 f3 f4 f6 f9 f6 fb f7 fe fa 01 fe 03 fd 05 fa 07 f8 08 fa 06 fe 01 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fd 01 f7 04 f6 05 f3 09 ee 0a e9 09 e8 0a e6 09 e2 09 e1 0a e1 0a
+df 06 e1 05 e5 05 ed 04 f4 03 f6 04 fa 06 02 06 09 06 0f 08 13 09 17 09 18 08 1b 07 1e 07 20 07
+============
+CSV,13,3073,-85,11,0,0,0,0,-96,1,29523584,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3073
+payload_len: 14
+rx_ctrl:
+  rssi: -79 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 29662884 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 15 f3 12 f7 0f f6 09 f3 02 f3 fe f4 fa f4 f5 f1 f2 eb f2 e9 f3 ea f4 ea f6 eb f9 ed
+fb ed fb ee fc f2 fb f7 f9 fa f7 f9 f6 f9 f5 f8 f3 f8 f2 f8 f3 f7 fc fd 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 05 fe 15 f9 16 f8 19 f8 1d fa 1f fd 21 00 23 02 24 05 24 08 23 0b
+21 0c 1f 0b 1d 0b 19 09 16 07 13 04 10 ff 11 fb 15 f7 17 f3 17 ee 18 ec 1b ed 1e eb 1e e9 1e e8
+============
+CSV,14,3073,-79,11,0,0,0,0,-97,1,29662884,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3115
+payload_len: 14
+rx_ctrl:
+  rssi: -78 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 29783746 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 ea 0e ee 0a f2 08 f7 08 fc 07 03 07 09 09 0c 0b 0e 0d 10 0f 10 11 0e 12 0d 13 0c 11
+0a 0f 09 0c 07 0a 06 09 07 06 08 04 0a 04 0c 03 0d 04 0c 06 0c 07 03 01 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fa 00 ea 02 e8 01 e6 00 e3 00 e0 ff df fd e0 fb df f7 de f5 dd f2
+de ef e0 ee e1 ef e5 f4 ea f9 ed fc ee 00 ed 06 eb 0a eb 0e eb 12 e9 13 e6 14 e4 15 e4 16 e5 14
+============
+CSV,15,3115,-78,11,0,0,0,0,-97,1,29783746,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3115
+payload_len: 14
+rx_ctrl:
+  rssi: -84 dBm
+  rate: 10
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 29864852 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 e9 f1 ee f2 f3 f4 f8 f9 fe fd 03 04 08 07 0a 08 0d 0c 0f 0f 0e 10 0e 12 0e 14 0b 12
+0a 11 09 0f 05 0b 04 06 05 04 04 01 04 fc 05 fa 08 fc 09 fd 0a fc 02 fe 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 02 fe 09 fb 0d fa 11 f7 15 f5 19 f4 1c f3 1d f5 1e f8 1e f9 20 f9
+22 f8 1f f7 19 f9 13 f9 0c f9 08 f9 05 f8 ff f5 f8 f4 ef f5 ea f4 eb f2 ea f1 e3 f0 e0 ef e2 ee
+============
+CSV,16,3115,-84,10,0,0,0,0,-97,1,29864852,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3115
+payload_len: 14
+rx_ctrl:
+  rssi: -78 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 30005477 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 18 f4 14 f5 0e f4 07 f4 02 f5 fe f4 fa f2 f7 f0 f4 ef f2 ec f2 e9 f4 e7 f6 e7 f7 e7
+fa ea fc ed fc f0 f9 f2 f8 f7 f8 f9 f6 f8 f3 f7 f4 f7 f5 f7 f6 f7 fd fd 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 05 fe 15 fc 17 ff 1a 00 1d 01 21 05 24 08 24 0c 24 0f 23 11 20 13
+1f 13 1e 13 1b 11 1a 0e 18 0b 15 07 15 03 17 fe 18 f8 19 f4 1a f0 1b ef 1d ee 1f ec 1f ec 1f ee
+============
+CSV,17,3115,-78,11,0,0,0,0,-97,1,30005477,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3115
+payload_len: 14
+rx_ctrl:
+  rssi: -78 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 30114994 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 1a f9 16 fa 11 fa 0b f9 06 f7 00 f5 fc f2 fa ef f9 eb f8 e9 fa e9 fb e8 fb e7 fe e9
+00 eb 00 ed ff f0 fe f4 fc f6 f9 f6 f7 f7 f6 f7 f7 f6 f8 f5 f8 f3 fe fc 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 04 01 13 06 15 07 17 09 1a 0c 1a 10 19 13 1a 15 19 17 19 1a 19 1b
+17 1c 15 1d 14 1a 14 16 12 12 10 0d 11 08 15 04 18 00 1a fc 1d f8 20 f7 21 f8 22 f7 23 f6 23 f7
+============
+CSV,18,3115,-78,11,0,0,0,0,-97,1,30114994,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3115
+payload_len: 14
+rx_ctrl:
+  rssi: -83 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 30197464 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 14 15 0f 12 0b 0f 07 09 01 02 fc 00 f8 fc f8 f5 f7 ef f5 ed f4 ec f2 ea f2 ea f4 ec
+f5 ed f8 ef f8 f2 f8 f6 fa fb fa ff fb 01 fb 03 f9 04 f7 04 f5 03 fd 01 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fd ff f6 fc f2 fb ee fb ea fc e7 f7 e3 f4 e1 f6 e3 f4 e3 f0 e0 ee
+de f0 e0 f1 e4 f3 ea f7 f1 fb f7 fd fb 03 ff 0c 03 11 06 13 09 14 0c 17 0f 19 13 1a 17 1b 15 1e
+============
+CSV,19,3115,-83,11,0,0,0,0,-97,1,30197464,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3115
+payload_len: 14
+rx_ctrl:
+  rssi: -78 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 30336784 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 fa e9 fa ec fa f1 fa f6 f7 fa f5 fe f3 02 f0 05 ed 05 ec 06 eb 05 eb 05 eb 04 eb 02
+ed 01 f2 01 f4 02 f6 03 f6 04 f7 04 f7 05 f7 07 f6 08 f5 07 f4 07 fc 01 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 fb 02 ed 04 eb 06 e9 08 e7 0b e7 0e e7 11 e7 13 e8 14 e8 16 e8
+16 ea 15 ec 14 ed 10 ee 0b f0 06 f1 02 ef ff eb fc ea fa e9 f7 e7 f5 e6 f6 e4 f6 e2 f5 e0 f6 e0
+============
+CSV,20,3115,-78,11,0,0,0,0,-97,1,30336784,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3115
+payload_len: 14
+rx_ctrl:
+  rssi: -78 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 30446361 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 e7 f7 eb f8 ef fc f2 00 f7 02 fc 06 fd 0a fc 0e fb 13 fb 15 fa 15 f9 14 f7 13 f6 10
+f6 0d f9 0b fa 0a fc 0a fe 09 ff 09 00 0a 01 0a 02 0b 01 0d 01 0e 00 03 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fc fc f3 f0 f2 ee f0 eb f0 e8 f1 e4 f2 e0 f4 df f6 dd f7 dc f9 dc
+fd db ff db fe e0 fb e5 f9 ea f7 ef f3 f1 ee f1 eb f4 e9 f5 e6 f4 e3 f3 e1 f3 e1 f3 e0 f4 dd f4
+============
+CSV,21,3115,-78,11,0,0,0,0,-97,1,30446361,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3115
+payload_len: 14
+rx_ctrl:
+  rssi: -84 dBm
+  rate: 10
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 30527388 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 14 11 10 10 0c 0c 07 06 01 04 fc 00 f8 fa f4 f7 f0 f5 ef f3 ef f0 f0 ec ef ee f1 f2
+f4 f2 f5 f3 f4 f9 f6 fc f8 fd fa ff fd 02 fe 04 fd 08 fa 09 f9 07 fe 01 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fc ff f2 fd f2 fb ef fa ea f8 e8 f4 e8 f2 e5 f1 e2 ef e1 ef e2 f0
+e4 f2 e5 f4 e8 f5 eb f6 f0 f9 f7 fe fb 04 ff 09 03 0d 08 11 0b 13 0d 16 10 1a 13 1c 15 1b 13 1a
+============
+CSV,22,3115,-84,10,0,0,0,0,-97,1,30527388,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3115
+payload_len: 14
+rx_ctrl:
+  rssi: -79 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 30668075 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 15 f1 11 f5 0c f7 06 f7 01 f7 fd f6 f9 f4 f5 f2 f2 f2 f0 f2 f1 ef f3 ec f4 ec f5 ee
+f7 ee f9 ef fa f3 fa f7 f9 f9 f9 fa f7 fa f5 fb f5 fb f5 fa f5 f8 fd fe 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 04 ff 14 fd 15 fc 17 fc 1a fd 1c 00 1e 04 1f 06 1f 08 20 0b 21 0d
+20 0f 1e 10 1b 0d 18 0a 14 07 0f 04 10 00 13 fb 16 f6 16 f2 15 ef 15 ed 16 ed 18 ec 19 ec 1b ed
+============
+CSV,23,3115,-79,11,0,0,0,0,-97,1,30668075,128
+
+=== INTERIM STATS [ping-esp32] ===
+elapsed_s: 55.0
+total_csi: 24
+avg_per_sec: 0.44
+rssi_range: -85 .. -78 dBm
+sig_mode: 0=24 
+ant: ant0=24 ant1=0
+rate_dist: 10=4 11=20 
+first_csi_at: 45.018 s
+last_csi_at: 54.493 s
+========================
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3115
+payload_len: 14
+rx_ctrl:
+  rssi: -79 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 30777913 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 f2 14 f4 10 f8 0d fc 09 00 06 04 05 0a 04 0f 05 13 05 15 06 15 08 15 08 13 08 11 08
+0f 08 0b 08 08 05 07 04 07 02 07 ff 08 fd 08 fc 09 fc 0b fe 0d 00 03 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fc 02 f0 08 ed 08 e9 07 e7 06 e4 05 e1 04 df 03 de 01 dd 00 de fe
+df fb e1 f9 e4 fa e7 fc ea fe ed 01 ee 07 f0 0c f2 10 f1 13 f2 16 f2 18 f1 1a f1 1c f1 1e f0 1e
+============
+CSV,24,3115,-79,11,0,0,0,0,-97,1,30777913,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3115
+payload_len: 14
+rx_ctrl:
+  rssi: -85 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 30860273 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 f7 19 fa 14 fd 0e fe 07 fb 01 fb fa ff f5 ff f4 fd f0 00 ec 03 ea 02 e9 01 eb 03 ee
+04 ef 03 f1 03 f4 02 f8 ff fc fc fe fa ff f9 01 f6 02 f4 03 f3 04 fc 01 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 fd 01 f3 01 f1 00 ed 01 e9 05 e7 07 e6 04 e4 03 e2 04 e0 07 e0
+08 e0 04 e3 02 e5 02 eb 01 f2 fe f7 fa fd f7 04 f5 0a f7 0f f9 12 f6 15 f2 18 f2 1a f3 1c f1 1d
+============
+CSV,25,3115,-85,11,0,0,0,0,-97,1,30860273,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3115
+payload_len: 14
+rx_ctrl:
+  rssi: -79 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 30999656 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 e9 10 ee 0d f3 0a fa 08 ff 07 05 07 0a 09 0e 0c 10 0d 0e 0d 0d 0e 0f 10 0f 10 0d 0f
+0b 0f 0a 0f 09 0b 08 06 08 04 08 03 08 03 0a 03 0b 02 0b 04 0d 05 03 01 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fa 00 ea 03 e8 03 e6 02 e2 ff e0 fc e0 fa df f8 df f5 de f3 de f1
+df ef e2 ee e6 f0 e9 f5 eb fb ed ff ee 04 ec 07 ec 0a ea 0d e9 10 e9 12 e7 14 e6 16 e4 18 e1 19
+============
+CSV,26,3115,-79,11,0,0,0,0,-97,1,30999656,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3115
+payload_len: 14
+rx_ctrl:
+  rssi: -79 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 31212002 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 f9 18 fa 14 fc 0f ff 0b 02 06 06 02 09 ff 0d fd 11 fb 13 f8 15 fb 16 ff 16 00 14 ff
+12 00 0f 01 0c 01 09 ff 07 fd 05 fb 04 f9 04 f9 05 f9 07 f8 07 f8 01 fe 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fc 03 f0 0b ee 0b eb 0c e8 0c e4 0a e1 09 df 08 de 07 de 06 df 04
+df 01 e0 00 e3 01 e8 02 ee 05 f1 07 f2 0b f3 11 f6 14 f9 17 fb 1b fc 1d fa 1d f9 1f f9 22 f9 22
+============
+CSV,27,3115,-79,11,0,0,0,0,-97,1,31212002,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3115
+payload_len: 14
+rx_ctrl:
+  rssi: -83 dBm
+  rate: 10
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 31293138 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 0d 17 0a 14 0a 0f 08 0b 03 06 fe 02 fb fd f9 f6 f6 f1 f1 f1 f2 f0 f5 ef f6 f0 f6 f2
+f7 f3 fa f5 f9 f8 f8 f9 f9 fb fb fe fd 00 fd 03 fb 08 f8 09 f8 07 fe 01 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fe fd fa f6 f8 f6 f4 f3 f1 ef ef ed ed eb ec ea ec e9 ec e8 ec e8
+eb e8 eb e6 ed e9 ef f1 f3 f6 f9 fa fb 01 fc 08 00 0d 04 10 08 12 0a 13 0a 15 0d 1a 0f 1d 0d 1f
+============
+CSV,28,3115,-83,10,0,0,0,0,-97,1,31293138,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3115
+payload_len: 14
+rx_ctrl:
+  rssi: -83 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 31433104 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 18 07 15 04 10 02 09 02 01 03 fa 03 f6 02 f4 fe f1 fa ed f9 ea f9 e8 f8 ea f6 ee f4
+ef f3 f0 f5 f4 f7 f7 f9 fa fd fc 01 fe 04 ff 05 fe 05 fb 06 f8 07 fd 01 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fe 01 f7 05 f3 08 ef 0b ec 0d eb 0e e8 0d e4 09 e1 07 e2 07 e2 08
+e2 0a e3 0b e6 0a ec 08 f3 05 f8 01 fd 02 04 07 0b 09 10 09 13 09 15 09 19 08 1b 07 1d 07 20 06
+============
+CSV,29,3115,-83,11,0,0,0,0,-97,1,31433104,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3115
+payload_len: 14
+rx_ctrl:
+  rssi: -79 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 32133468 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 17 fc 14 fd 0f fe 08 fb 03 f9 ff f7 fb f4 f9 f1 f7 ee f6 ec f7 ec f9 eb f9 ea fa eb
+fc ee fc f1 fd f3 fc f5 fb f7 fa f9 f8 f9 f6 f9 f5 fa f4 f9 f6 f7 fe fd 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 04 02 11 08 12 0a 13 0b 13 0d 14 12 14 16 14 18 14 19 13 1b 11 1d
+10 1c 0d 1b 0c 18 0c 14 0c 0f 0c 09 10 05 14 01 16 fe 19 fc 1b f9 1b f7 1c f8 1e f8 1f f9 22 fb
+============
+CSV,30,3115,-79,11,0,0,0,0,-97,1,32133468,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3115
+payload_len: 14
+rx_ctrl:
+  rssi: -83 dBm
+  rate: 10
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 32220731 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 eb ef ef f2 f3 f4 f8 f7 fb fb 00 ff 07 02 0b 04 0e 07 0f 0b 10 0c 0f 0c 0e 0e 0e 10
+0e 0e 0a 0b 07 08 06 04 05 02 04 01 02 fe 01 fa 02 f8 03 f7 04 f7 01 fe 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 02 00 0a 03 0d 04 11 04 13 04 14 06 17 07 1b 09 1c 09 1c 09 1c 0c
+1b 0e 19 0d 16 0b 12 08 0e 03 0a 01 04 fe fe f9 f8 f5 f3 f2 ef ef ed ec eb e9 e9 ea e7 ed e4 ee
+============
+CSV,31,3115,-83,10,0,0,0,0,-97,1,32220731,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3115
+payload_len: 14
+rx_ctrl:
+  rssi: -78 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 32354137 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 ed f0 f0 f4 f1 f8 f4 fc f6 02 f6 07 f8 0b f9 0f f8 11 f7 13 f4 14 f3 13 f3 12 f2 11
+f2 10 f5 0d f9 0a fc 09 fd 0a fd 09 ff 08 01 09 01 0b fe 0d fc 0e ff 03 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fd fb f7 eb f8 e9 f9 e6 fa e3 fb e1 fc e0 ff dd 02 db 04 db 06 dc
+07 dd 07 e0 07 e4 04 e7 01 ea ff ed fb ed f5 eb f0 ec ec ed ea ed e8 ee e6 ee e4 ee e3 ec e3 eb
+============
+CSV,32,3115,-78,11,0,0,0,0,-97,1,32354137,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3241
+payload_len: 14
+rx_ctrl:
+  rssi: -84 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 32959040 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 18 ec 13 ee 0c f3 07 fb 04 00 00 04 fb 08 f9 09 f7 09 f4 08 ef 0a ec 0d ed 0d ee 08
+ec 05 ec 04 f2 04 f9 05 fd 05 00 03 01 03 02 04 02 06 03 08 04 09 01 02 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 ff 02 fe 09 fd 0d fe 12 ff 17 fd 1c fa 1d f9 1c f9 1d f8 1f f8 21
+f9 22 f9 22 f9 1f fb 18 fd 0f fe 08 03 05 07 00 09 f9 0e f6 13 f3 17 ee 19 ec 19 e9 19 e6 18 e9
+============
+CSV,33,3241,-84,11,0,0,0,0,-97,1,32959040,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3241
+payload_len: 14
+rx_ctrl:
+  rssi: -83 dBm
+  rate: 10
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 33040097 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 10 ec 0f ee 0b f2 06 f8 03 fd 01 04 fe 0a f9 0c f7 0f f7 11 f5 11 f3 10 f3 10 f4 10
+f6 11 f6 0e f8 09 fb 07 fd 06 ff 04 02 04 06 02 09 00 09 02 08 05 01 01 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fe 01 f8 09 f7 0b f5 0c f2 0e ef 10 ee 14 ee 16 ee 16 ed 18 ec 1a
+e9 18 e9 18 ec 15 f2 10 f9 0a fd 05 01 02 08 00 0d ff 10 fa 14 f4 17 f2 19 f0 19 ec 1a ea 1a ed
+============
+CSV,34,3241,-83,10,0,0,0,0,-97,1,33040097,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3241
+payload_len: 14
+rx_ctrl:
+  rssi: -79 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 33180756 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 fd e6 ff e9 fc ee f9 f4 f8 f9 f7 ff f3 02 f0 02 ee 04 ed 07 eb 06 e9 05 e9 03 eb 01
+ee ff f1 fd f4 ff f6 01 f7 04 f8 05 f9 05 f8 07 f6 09 f5 0a f4 09 fc 02 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 01 fb 08 ed 0a eb 0c ea 0e e8 11 e8 13 e7 16 e7 19 e9 1b ea 1d eb
+1f ed 1d ee 1a ef 15 f0 10 f1 0c f2 08 f1 05 ee 03 e9 ff e5 fc e3 fa e3 f9 e3 f9 e0 fa de fb de
+============
+CSV,35,3241,-79,11,0,0,0,0,-97,1,33180756,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3241
+payload_len: 14
+rx_ctrl:
+  rssi: -78 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 33392772 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 f0 ea f4 ef f7 f3 f7 f8 f9 fe fb 03 f8 09 f6 0d f4 11 f1 13 ef 13 ed 12 ec 0f ec 0c
+ee 0a f3 09 f7 08 f9 07 f9 08 fb 09 fd 0a fd 0a fc 0c fa 0c f9 0c fe 03 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 ff fb fe eb fe ea ff e8 00 e5 03 e1 06 e0 09 df 0b de 0d de 0f dd
+10 dd 10 df 0d e4 08 e8 05 eb 02 ed fe ed f9 ec f5 ec f2 eb ee e9 ea e7 ea e5 ea e4 ea e4 e9 e6
+============
+CSV,36,3241,-78,11,0,0,0,0,-97,1,33392772,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3241
+payload_len: 14
+rx_ctrl:
+  rssi: -82 dBm
+  rate: 10
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 33473886 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 ef e8 f3 ea f6 ef f9 f7 fd fd 02 01 06 05 09 09 0b 0d 0d 11 0d 14 0e 15 0e 14 0b 11
+07 10 05 0f 04 0b 04 05 06 02 04 00 02 fc 02 fa 02 fa 04 f9 06 fb 01 ff 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 02 01 09 06 0b 07 0f 09 15 0c 19 0f 1b 10 1c 12 1c 13 1f 11 1f 10
+1d 10 1a 10 18 0e 13 09 0d 04 06 00 01 fa ff f4 fd f0 f8 ee f4 ec f3 e8 f3 e4 f0 e4 ed e4 ec e2
+============
+CSV,37,3241,-82,10,0,0,0,0,-97,1,33473886,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3241
+payload_len: 14
+rx_ctrl:
+  rssi: -78 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 33614610 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 fa 1e fa 18 fd 12 01 0d 04 08 09 04 0e 02 12 ff 15 fc 17 fc 18 00 19 03 19 02 18 01
+16 04 13 05 0e 03 0a 00 0b fe 0c fc 0b fb 0a fa 0b f9 0d f9 0f fc 03 ff 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fc 03 ef 10 ed 11 ea 12 e6 13 e3 13 df 12 dd 11 dc 10 db 0d db 0a
+dc 09 dd 09 df 09 e3 09 e8 0c eb 0d ef 10 f2 15 f5 18 f8 1d fb 21 fb 23 fb 23 fc 24 fb 26 f7 25
+============
+CSV,38,3241,-78,11,0,0,0,0,-97,1,33614610,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3241
+payload_len: 14
+rx_ctrl:
+  rssi: -78 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 33713579 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 0d e7 0b ed 09 f2 04 f6 fe f9 f7 f9 f1 fa ef fd ec fd ea fc e9 fa e9 f8 ea f7 ec f7
+ed f6 f0 f7 f3 f9 f5 fd f6 ff f6 01 f6 02 f5 02 f3 01 f2 00 f1 00 fc 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 04 fc 12 f2 13 f3 16 f3 19 f3 1c f5 1d f8 1f f9 21 f9 23 fa 23 fc
+23 fd 22 fe 1f fe 1b fc 17 fa 13 f7 10 f4 0e ef 0c ed 09 ea 08 e7 0b e5 0d e2 0c e0 0c de 0e df
+============
+CSV,39,3241,-78,11,0,0,0,0,-97,1,33713579,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3241
+payload_len: 14
+rx_ctrl:
+  rssi: -79 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 33844323 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 1a fa 16 fc 12 fb 0a fb 04 fb fe f8 f8 f4 f4 f1 f4 ef f5 ec f5 eb f4 e9 f4 e9 f8 eb
+fa eb fb ee fc f2 fb f4 fa f6 f8 f8 f6 f8 f5 fa f5 fd f4 fa f4 f7 fd fd 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 02 03 0d 0d 10 0f 13 12 15 14 14 16 13 19 13 1b 12 1d 11 1f 0f 20
+0b 20 0b 1f 0a 1c 09 18 0c 13 0d 0d 10 08 12 03 16 ff 19 fc 1c f9 1e f8 1f fa 21 f9 24 f8 24 fa
+============
+CSV,40,3241,-79,11,0,0,0,0,-97,1,33844323,128
+
+=== FINAL STATS [ping-esp32] ===
+elapsed_s: 65.0
+total_csi: 41
+avg_per_sec: 0.63
+rssi_range: -85 .. -78 dBm
+sig_mode: 0=41 
+ant: ant0=41 ant1=0
+rate_dist: 10=8 11=33 
+first_csi_at: 45.018 s
+last_csi_at: 60.205 s
+========================
+=== EXP-001 COMPLETE [ping-esp32] ===
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3373
+payload_len: 14
+rx_ctrl:
+  rssi: -81 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -96 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 39124583 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 f2 12 f6 10 fa 0e fe 0c 02 0a 06 08 0a 06 0f 07 12 07 12 07 11 09 12 0a 11 09 0e 0a
+0c 0b 0a 0a 08 06 07 02 08 01 0c 01 0e 01 0e 02 0f 02 10 03 0f 06 03 02 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fb 04 ed 10 eb 11 e9 11 e6 10 e2 0e df 0c de 0b dc 0a db 08 db 07
+dc 05 de 03 e1 01 e4 03 e6 06 ea 09 ed 0b ef 0e f1 13 f2 16 f2 18 f1 1b ef 1c f0 1d f0 1d ef 1d
+============
+CSV,41,3373,-81,11,0,0,0,0,-96,1,39124583,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3373
+payload_len: 14
+rx_ctrl:
+  rssi: -87 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -96 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 39206865 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 ef 13 f0 10 f5 0b fa 06 00 02 02 fe 04 fa 09 f6 0d f2 0d f1 0d f2 0f f2 10 f2 0d f5
+0a f8 08 fb 04 fb 00 fb fd fa fc f9 fb f7 fb f7 fc f7 fb f6 fa f6 fe fd 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 ff fb fe ef fe ef fb ed f9 e9 fa e5 fa e3 fa e2 f9 e1 f8 e2 fa e3
+fd e4 fb e4 fa e5 f9 ea f9 ef f9 f4 f7 fc f4 03 f4 07 f4 0a f5 0d f6 10 f4 14 f0 17 ed 18 ea 16
+============
+CSV,42,3373,-87,11,0,0,0,0,-96,1,39206865,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3373
+payload_len: 14
+rx_ctrl:
+  rssi: -80 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -96 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 40257335 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 11 10 0e 0c 0e 08 0b 05 09 01 0b fb 0c f6 0d f3 10 f1 12 f0 11 f1 10 f1 11 f0 11 f2
+10 f4 0f f7 0b f8 08 f8 07 f6 06 f4 04 f3 03 f3 05 f3 09 f3 0a f5 02 fd 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 02 05 0a 16 08 18 08 1b 08 1d 06 1e 02 20 ff 21 fd 23 fd 25 fa 25
+f8 24 f8 22 fa 1e fd 1a ff 16 01 13 06 14 0a 16 0e 14 11 14 14 15 15 17 15 17 17 17 19 17 19 18
+============
+CSV,43,3373,-80,11,0,0,0,0,-96,1,40257335,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 33
+payload_len: 14
+rx_ctrl:
+  rssi: -86 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -96 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 41173002 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 13 02 0f 01 0a 00 05 00 00 00 fc fe f9 fc f5 f9 f3 f6 f2 f4 f3 f4 f4 f4 f4 f1 f5 f1
+f7 f2 f9 f6 fb fa fb f9 fa fa f9 fd f9 00 f9 02 f8 04 f7 03 f4 00 fc 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fe 03 fb 0f fd 10 fd 13 fa 16 f7 16 f5 18 f4 1a f2 19 f0 19 f0 1b
+f0 1d f1 19 f4 14 f7 11 fa 0f fc 0b 00 08 06 06 0d 03 15 04 19 04 1b 04 1a 05 1c 05 1f 04 1f 04
+============
+CSV,44,33,-86,11,0,0,0,0,-96,1,41173002,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3543
+payload_len: 14
+rx_ctrl:
+  rssi: -80 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -96 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 41299804 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 12 0b 0f 09 0d 06 09 01 07 fc 05 f9 07 f7 09 f2 09 ef 0a ee 0b f0 0c f0 0c f0 0c f2
+0b f5 09 f6 06 f5 03 f5 03 f4 03 f3 02 f3 01 f2 01 f1 04 f2 07 f3 02 fc 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 02 03 0b 0f 0c 13 0c 15 0c 18 0c 1c 0a 20 08 21 07 21 06 21 04 21
+02 21 01 21 01 1d 02 19 04 17 06 14 0b 11 0f 0f 12 0f 14 0f 15 0f 17 0d 19 0e 19 0e 1a 0f 1a 12
+============
+CSV,45,3543,-80,11,0,0,0,0,-96,1,41299804,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3565
+payload_len: 14
+rx_ctrl:
+  rssi: -79 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 41498397 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 ea f5 ef f7 f3 fa f4 ff f6 04 f8 07 f9 0b f8 0e f7 10 f6 12 f5 11 f5 0f f5 0e f5 0c
+f4 0b f5 0a f8 08 fb 09 fd 0b ff 0d 00 0e 00 0e fe 0d fc 0e fb 11 fe 04 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fc fc f0 f0 f0 ee f0 eb f0 e9 f1 e6 f2 e3 f4 e1 f6 e1 f6 df f7 de
+fa de fd df fc e3 f9 e6 f8 e9 f7 ef f4 f2 ef f2 ec f2 ea f3 e7 f4 e5 f4 e4 f2 e3 f0 e1 f1 e1 f0
+============
+CSV,46,3565,-79,11,0,0,0,0,-97,1,41498397,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3565
+payload_len: 14
+rx_ctrl:
+  rssi: -80 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 41644933 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 15 f2 11 f6 0d f7 07 f4 01 f3 fc f3 f9 f3 f6 f2 f4 f0 f5 ee f6 ec f7 eb f9 eb fb ec
+f9 ef f9 f2 fa f4 f9 f5 f7 f7 f3 fa f1 fb f2 f9 f4 f6 f5 f5 f6 f3 fd fc 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 06 fd 18 f7 1a fa 1b fc 1d fd 20 ff 21 02 21 05 23 08 24 0a 22 0d
+21 0f 1f 0f 1c 0b 1a 06 18 03 14 00 13 fb 16 f7 18 f4 19 f1 1c ed 1d ea 1a ec 19 eb 19 eb 19 ed
+============
+CSV,47,3565,-80,11,0,0,0,0,-97,1,41644933,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 3631
+payload_len: 14
+rx_ctrl:
+  rssi: -81 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -96 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 42413445 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 00 e4 ff eb fe f2 fc f7 f9 fb f5 fd f2 01 ef 04 ec 06 ec 06 ec 04 ec 02 ed 02 ed 02
+ee 01 f1 00 f6 02 f9 04 f9 06 f7 08 f6 08 f6 08 f6 08 f4 08 f3 06 fd 01 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 02 fa 0a ea 0c eb 0f ea 12 e9 15 ea 16 ea 18 eb 1a eb 1c ea 1f eb
+21 ed 1e f0 1a f2 15 f2 10 f1 0b f1 08 ef 05 ec 04 e9 03 e4 00 e2 fe e1 fe e0 fe df ff e0 02 e0
+============
+CSV,48,3631,-81,11,0,0,0,0,-96,1,42413445,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 39
+payload_len: 14
+rx_ctrl:
+  rssi: -80 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -96 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 42691685 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 f1 12 f4 0f f9 0c fe 0b 01 09 06 07 09 06 0a 07 0d 09 0f 0c 0f 0d 0d 0c 0c 0b 0b 0b
+0a 0a 09 09 08 07 07 04 09 02 0b 00 0c ff 0d 00 0d 00 0d 03 0e 05 03 01 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fb 03 ec 0c ea 0c e8 0b e5 09 e4 08 e2 06 e0 05 df 03 de 00 dd 01
+dd 00 de fe e1 ff e4 01 e8 04 eb 06 ec 0a eb 0c ec 0f ee 12 ee 14 ee 16 ef 18 ef 1b ee 1a ec 17
+============
+CSV,49,39,-80,11,0,0,0,0,-96,1,42691685,128

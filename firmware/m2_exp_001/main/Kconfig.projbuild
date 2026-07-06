@@ -1,0 +1,32 @@
+menu "WiFi Configuration"
+
+    config ESP_WIFI_SSID
+        string "WiFi SSID"
+        default "myssid"
+        help
+            SSID of the WiFi network the ESP32 will connect to.
+
+    config ESP_WIFI_PASSWORD
+        string "WiFi Password"
+        default "mypassword"
+        help
+            Password for the WiFi network.
+
+endmenu
+
+menu "Experiment Configuration"
+
+    config EXP_SCENARIO_LABEL
+        string "Scenario label"
+        default "idle"
+        help
+            Label for this scenario run (e.g. idle, ping-router, ping-esp32, download, video).
+
+    config EXP_DURATION_SECONDS
+        int "Experiment duration (seconds)"
+        default 60
+        range 10 3600
+        help
+            How long to accumulate CSI stats before printing final summary.
+
+endmenu

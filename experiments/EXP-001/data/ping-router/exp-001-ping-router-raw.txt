@@ -1,0 +1,445 @@
+T)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7176
+load:0x400ÿets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:7176
+load:0x40078000,len:15564
+ho 0 tail 12 room 4
+load:0x40080400,len:4
+load:0x40080404,len:3904
+entry 0x40080640
+I (31) boot: ESP-IDF v5.3.2 2nd stage bootloader
+I (31) boot: compile time Jul  6 2026 12:17:19
+I (31) boot: Multicore bootloader
+I (35) boot: chip revision: v3.0
+I (39) boot.esp32: SPI Speed      : 40MHz
+I (44) boot.esp32: SPI Mode       : DIO
+I (48) boot.esp32: SPI Flash Size : 2MB
+I (53) boot: Enabling RNG early entropy source...
+I (58) boot: Partition Table:
+I (62) boot: ## Label            Usage          Type ST Offset   Length
+I (69) boot:  0 nvs              WiFi data        01 02 00009000 00006000
+I (77) boot:  1 phy_init         RF data          01 01 0000f000 00001000
+I (84) boot:  2 factory          factory app      00 00 00010000 00100000
+I (92) boot: End of partition table
+I (96) esp_image: segment 0: paddr=00010020 vaddr=3f400020 size=19624h (103972) map
+I (140) esp_image: segment 1: paddr=0002964c vaddr=3ffb0000 size=03f2ch ( 16172) load
+I (146) esp_image: segment 2: paddr=0002d580 vaddr=40080000 size=02a98h ( 10904) load
+I (151) esp_image: segment 3: paddr=00030020 vaddr=400d0020 size=84bb0h (543664) map
+I (340) esp_image: segment 4: paddr=000b4bd8 vaddr=40082a98 size=14bd4h ( 84948) load
+I (386) boot: Loaded app from partition at offset 0x10000
+I (386) boot: Disabling RNG early entropy source...
+I (398) cpu_start: Multicore app
+I (407) cpu_start: Pro cpu start user code
+I (407) cpu_start: cpu freq: 160000000 Hz
+I (407) app_init: Application information:
+I (410) app_init: Project name:     exp_001
+I (415) app_init: App version:      6a92f66-dirty
+I (420) app_init: Compile time:     Jul  6 2026 12:23:59
+I (426) app_init: ELF file SHA256:  deddb4bda...
+I (431) app_init: ESP-IDF:          v5.3.2
+I (436) efuse_init: Min chip rev:     v0.0
+I (441) efuse_init: Max chip rev:     v3.99 
+I (446) efuse_init: Chip rev:         v3.0
+I (451) heap_init: Initializing. RAM available for dynamic allocation:
+I (458) heap_init: At 3FFAE6E0 len 00001920 (6 KiB): DRAM
+I (464) heap_init: At 3FFB85E0 len 00027A20 (158 KiB): DRAM
+I (470) heap_init: At 3FFE0440 len 00003AE0 (14 KiB): D/IRAM
+I (476) heap_init: At 3FFE4350 len 0001BCB0 (111 KiB): D/IRAM
+I (483) heap_init: At 4009766C len 00008994 (34 KiB): IRAM
+I (491) spi_flash: detected chip: generic
+I (494) spi_flash: flash io: dio
+W (498) spi_flash: Detected size(4096k) larger than the size in the binary image header(2048k). Using the size in the binary image header.
+I (512) main_task: Started on CPU0
+I (522) main_task: Calling app_main()
+I (522) gpio: GPIO[2]| InputEn: 0| OutputEn: 0| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 
+I (592) wifi:wifi driver task: 3ffc1168, prio:23, stack:6656, core=0
+I (612) wifi:wifi firmware version: b0fd6006b
+I (612) wifi:wifi certification version: v7.0
+I (612) wifi:config NVS flash: enabled
+I (612) wifi:config nano formating: disabled
+I (612) wifi:Init data frame dynamic rx buffer num: 32
+I (622) wifi:Init static rx mgmt buffer num: 5
+I (622) wifi:Init management short buffer num: 32
+I (632) wifi:Init dynamic tx buffer num: 32
+I (632) wifi:Init static rx buffer size: 2212
+I (632) wifi:Init static rx buffer num: 10
+I (642) wifi:Init dynamic rx buffer num: 32
+I (642) wifi_init: rx ba win: 6
+I (652) wifi_init: accept mbox: 6
+I (652) wifi_init: tcpip mbox: 32
+I (652) wifi_init: udp mbox: 6
+I (662) wifi_init: tcp mbox: 6
+I (662) wifi_init: tcp tx win: 5760
+I (662) wifi_init: tcp rx win: 5760
+I (672) wifi_init: tcp mss: 1440
+I (672) wifi_init: WiFi IRAM OP enabled
+I (682) wifi_init: WiFi RX IRAM OP enabled
+W (682) wifi:Password length matches WPA2 standards, authmode threshold changes from OPEN to WPA2
+I (692) phy_init: phy_version 4840,02e0d70,Sep  2 2024,19:39:07
+I (782) wifi:mode : sta (a8:42:e3:5b:f4:20)
+I (782) wifi:enable tsf
+=== EXP-001 START [ping-router] duration=60s ===
+WiFi connecting to SSID: Rabindra
+I (782) main_task: Returned from app_main()
+WiFi started. Connecting...
+Disconnected. Reconnecting...
+Disconnected. Reconnecting...
+I (5632) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1, snd_ch_cfg:0x0
+I (5632) wifi:state: init -> auth (0xb0)
+I (5632) wifi:state: auth -> assoc (0x0)
+I (5642) wifi:state: assoc -> run (0x10)
+I (5662) wifi:state: run -> init (0x2c0)
+I (5672) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1, snd_ch_cfg:0x0
+Disconnected. Reconnecting...
+[STATS] No CSI callbacks yet (5 s elapsed)
+Disconnected. Reconnecting...
+I (8182) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1, snd_ch_cfg:0x0
+I (8182) wifi:state: init -> auth (0xb0)
+I (9192) wifi:state: auth -> init (0x200)
+I (9202) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1, snd_ch_cfg:0x0
+Disconnected. Reconnecting...
+Disconnected. Reconnecting...
+I (11662) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1, snd_ch_cfg:0x0
+I (11662) wifi:state: init -> auth (0xb0)
+I (12672) wifi:state: auth -> init (0x200)
+I (12682) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1, snd_ch_cfg:0x0
+Disconnected. Reconnecting...
+Disconnected. Reconnecting...
+I (15142) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1, snd_ch_cfg:0x0
+I (15142) wifi:state: init -> auth (0xb0)
+[STATS] No CSI callbacks yet (15 s elapsed)
+I (16152) wifi:state: auth -> init (0x200)
+I (16162) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1, snd_ch_cfg:0x0
+Disconnected. Reconnecting...
+Disconnected. Reconnecting...
+I (18622) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1, snd_ch_cfg:0x0
+I (18622) wifi:state: init -> auth (0xb0)
+I (19642) wifi:state: auth -> init (0x200)
+I (19652) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1, snd_ch_cfg:0x0
+Disconnected. Reconnecting...
+Disconnected. Reconnecting...
+I (22102) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1, snd_ch_cfg:0x0
+I (22112) wifi:state: init -> auth (0xb0)
+I (23122) wifi:state: auth -> init (0x200)
+I (23132) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1, snd_ch_cfg:0x0
+Disconnected. Reconnecting...
+Disconnected. Reconnecting...
+I (25552) wifi:new:<1,0>, old:<1,0>, ap:<255,255>, sta:<1,0>, prof:1, snd_ch_cfg:0x0
+I (25552) wifi:state: init -> auth (0xb0)
+I (25562) wifi:state: auth -> assoc (0x0)
+I (25572) wifi:state: assoc -> run (0x10)
+I (25622) wifi:connected with Rabindra, aid = 1, channel 1, BW20, bssid = 8a:da:0c:b9:08:43
+I (25622) wifi:security: WPA2-PSK, phy: bgn, rssi: -86
+I (25622) wifi:pm start, type: 1
+
+I (25622) wifi:dp: 1, bi: 102400, li: 3, scale listen interval from 307200 us to 307200 us
+I (25652) wifi:<ba-add>idx:0 (ifx:0, 8a:da:0c:b9:08:43), tid:0, ssn:0, winSize:64
+I (25692) wifi:dp: 2, bi: 102400, li: 4, scale listen interval from 307200 us to 409600 us
+I (25692) wifi:AP's beacon interval = 102400 us, DTIM period = 2
+[STATS] No CSI callbacks yet (25 s elapsed)
+I (30132) esp_netif_handlers: sta ip: 192.168.29.140, mask: 255.255.255.0, gw: 192.168.29.1
+Connected. IP: 192.168.29.140
+Enabling CSI...
+CSI enabled.
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 1237
+payload_len: 14
+rx_ctrl:
+  rssi: -84 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 25889595 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 18 04 15 03 10 02 09 02 03 01 02 03 fe 02 f7 00 f0 fd ed f9 ec f4 ea f1 ec ee ee ed
+ee ee f1 ee f4 f0 f5 f3 f9 f4 fd f6 fd fb fc 00 fc 02 fb 04 fa 05 fe 01 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fd 02 f4 0b f3 0b f2 0a ef 0c ed 0e ed 0f ec 10 ed 0f ee 0f ef 12
+ee 13 ef 13 f3 13 f6 11 f8 0f f9 0c fd 0b 03 0b 08 0a 0b 08 0e 06 11 04 14 04 16 04 17 03 17 03
+============
+CSV,0,1237,-84,11,0,0,0,0,-97,1,25889595,128
+
+=== INTERIM STATS [ping-router] ===
+elapsed_s: 35.0
+total_csi: 1
+avg_per_sec: 0.03
+rssi_range: -84 .. -84 dBm
+sig_mode: 0=1 
+ant: ant0=1 ant1=0
+rate_dist: 11=1 
+first_csi_at: 31.928 s
+last_csi_at: 31.928 s
+========================
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 1424
+payload_len: 14
+rx_ctrl:
+  rssi: -78 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 29137022 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 1e 02 18 03 12 02 09 00 01 00 fa ff f5 fc f1 fa eb f8 e7 f7 e6 f6 e4 f4 e5 f1 e7 ef
+e9 ef ec ef f0 f1 f3 f3 f6 f5 f9 f9 fa fd fb 00 fd 03 fc 06 f8 09 fd 02 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fd 01 f3 08 f3 09 f4 0c f3 0f f0 12 ee 16 ed 18 eb 19 e9 1a e7 1d
+e5 1d e5 1a e8 17 ee 13 f2 0e f6 0a fd 0a 05 0b 0d 09 14 06 19 05 1d 04 1f 03 21 02 24 03 26 05
+============
+CSV,1,1424,-78,11,0,0,0,0,-97,1,29137022,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 1424
+payload_len: 14
+rx_ctrl:
+  rssi: -79 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 29267466 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 ee 19 ef 13 f4 0e f9 08 fb 02 fe fb 02 f6 06 f3 09 ef 0b eb 0d ec 10 eb 11 eb 10 ee
+10 f1 0e f3 0b f5 08 f7 07 fa 05 fc 01 fd fd fd fa fd f7 fc f6 fa fd fe 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fe fb fa ed f9 ec f8 eb f6 e7 f6 e2 f4 e0 f2 df f1 dd f1 da f2 d9
+f4 da f4 da f5 dd f7 e5 f8 ee f9 f3 f7 f9 f3 01 f3 09 f1 0e ef 14 ef 19 ed 1a ea 1e ea 22 ea 20
+============
+CSV,2,1424,-79,11,0,0,0,0,-97,1,29267466,128
+
+=== INTERIM STATS [ping-router] ===
+elapsed_s: 45.0
+total_csi: 3
+avg_per_sec: 0.07
+rssi_range: -84 .. -78 dBm
+sig_mode: 0=3 
+ant: ant0=3 ant1=0
+rate_dist: 11=3 
+first_csi_at: 31.928 s
+last_csi_at: 41.805 s
+========================
+
+=== INTERIM STATS [ping-router] ===
+elapsed_s: 55.0
+total_csi: 3
+avg_per_sec: 0.05
+rssi_range: -84 .. -78 dBm
+sig_mode: 0=3 
+ant: ant0=3 ant1=0
+rate_dist: 11=3 
+first_csi_at: 31.928 s
+last_csi_at: 41.805 s
+========================
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 1737
+payload_len: 14
+rx_ctrl:
+  rssi: -79 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 35478810 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 fc 1a fa 17 fc 13 fe 0e fe 07 00 01 05 fd 09 fb 0e fa 11 f8 13 f8 16 f9 17 f7 17 f8
+18 fb 17 ff 13 ff 0f fd 0e fd 0c fe 09 fe 07 ff 05 fe 05 fb 07 f9 02 fe 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fc 00 f1 01 ef 03 ed 07 eb 07 e8 05 e6 06 e4 07 e2 07 df 06 dd 04
+dd 01 de fe e2 fd e6 fe e9 00 ec 01 f1 04 f5 0a f8 0e f9 11 fc 14 fd 17 fd 1a fd 1e ff 20 01 20
+============
+CSV,3,1737,-79,11,0,0,0,0,-97,1,35478810,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 1817
+payload_len: 14
+rx_ctrl:
+  rssi: -82 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 37184891 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 e5 ef e8 f1 eb f2 f1 f2 f7 f2 fa f2 fe f2 02 f1 07 ef 0c ef 10 f1 13 f0 14 ef 15 f1
+16 f1 16 f3 14 f6 10 f9 0a fb 07 fc 06 ff 04 04 01 04 fc 03 f6 03 fd 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fd 01 f5 07 f5 09 f8 0e fa 14 fb 19 fd 1a ff 1d 00 21 02 22 06 23
+08 25 08 25 0a 23 09 1f 07 17 03 0e 01 06 00 fc fd f4 f9 f1 f3 f1 ee ee ed ea e9 ea e8 eb e9 ea
+============
+CSV,4,1817,-82,11,0,0,0,0,-97,1,37184891,128
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 1817
+payload_len: 14
+rx_ctrl:
+  rssi: -82 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 37316378 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 1d f1 1c f3 17 f8 11 fd 0f 01 0d 03 09 06 05 08 00 0a fe 0d fc 0c f8 0d f7 12 f5 13
+f3 14 f2 14 f3 11 f4 0d f5 0c f6 0b f7 08 f9 05 fd 02 01 fe 03 fb 01 fe 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 fd fd f6 f5 f4 f7 f0 fb ed ff ea ff e7 00 e4 00 e0 00 dc 03 dc 06
+db 08 dc 09 dd 08 e3 08 e9 06 ee 02 f3 01 fc 01 04 ff 0b fd 13 fc 16 fb 18 f8 1c f4 20 f3 24 f6
+============
+CSV,5,1817,-82,11,0,0,0,0,-97,1,37316378,128
+
+=== FINAL STATS [ping-router] ===
+elapsed_s: 65.0
+total_csi: 6
+avg_per_sec: 0.09
+rssi_range: -84 .. -78 dBm
+sig_mode: 0=6 
+ant: ant0=6 ant1=0
+rate_dist: 11=6 
+first_csi_at: 31.928 s
+last_csi_at: 60.205 s
+========================
+=== EXP-001 COMPLETE [ping-router] ===
+
+=== CSI ===
+MAC (src): 00:00:00:00:00:00
+MAC (dst): a8:42:e3:5b:f4:20
+first_word_invalid: 1
+len: 128
+rx_seq: 2199
+payload_len: 14
+rx_ctrl:
+  rssi: -79 dBm
+  rate: 11
+  sig_mode: 0 (0=non-HT, 1=HT, 3=VHT)
+  mcs: 0
+  cwb: 0 (0=20MHz, 1=40MHz)
+  smoothing: 0
+  not_sounding: 0
+  aggregation: 0
+  stbc: 0
+  fec_coding: 0
+  sgi: 0 (0=Long GI, 1=Short GI)
+  noise_floor: -97 dBm
+  ampdu_cnt: 0
+  channel: 1
+  secondary_channel: 0 (0=none, 1=above, 2=below)
+  timestamp: 41016118 us
+  ant: 0 (0=ant0, 1=ant1)
+  sig_len: 14
+  rx_state: 0
+CSI BUF (hex, first 128 bytes):
+0e e0 00 00 e8 f0 ec f1 f1 f4 f8 f6 fd f6 03 f8 08 fa 0d fb 11 fc 13 fd 13 00 12 02 14 04 16 06
+15 07 11 07 0d 06 09 05 06 04 03 04 00 02 fd 01 fb fe fc fb fe f8 ff fd 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 04 02 11 08 13 08 17 06 1a 05 1d 05 20 06 23 06 24 06 25 05 26 05
+27 06 25 06 20 03 1b ff 14 fc 0b fd 03 fc fc f8 f6 f5 f1 f3 eb f1 e8 f0 e7 ee e4 ec e1 eb e1 ec
+============
+CSV,6,2199,-79,11,0,0,0,0,-97,1,41016118,128
