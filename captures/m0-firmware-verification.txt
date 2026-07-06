@@ -1,0 +1,63 @@
+OpenCSI M0 — Firmware Toolchain Verification
+==============================================
+Date:       2026-07-06
+Device:     ESP32 DevKit V1 (ESP32-D0WD-V3 rev3.0)
+Host:       Windows 11, PowerShell 5.1
+ESP-IDF:    v5.3.2 (commit 9d7f2d69f50d1288526d4f1027108e314e8c879f)
+Toolchain:  xtensa-esp-elf-gcc 13.2.0
+Build:      CMake 3.30.2, Ninja 1.12.1, CCache 4.10.2
+Project:    firmware/m0_minimal/
+
+Steps Performed
+----------------
+1. Identify COM port
+   COMMAND: [System.IO.Ports.SerialPort]::getportnames()
+   RESULT:  COM6
+
+2. Flash firmware
+   COMMAND: idf.py -p COM6 flash
+   RESULT:  esptool.py v4.11.0 detected ESP32-D0WD-V3 (rev3.0)
+            MAC: a8:42:e3:5b:f4:20
+            Crystal: 40MHz
+            Flash: 2MB, DIO @ 40MHz
+            Wrote bootloader (26752B), app (182656B), partition table (3072B)
+            Hash verified. Hard reset via RTS.
+
+3. Open serial monitor
+   COMMAND: idf.py -p COM6 monitor
+   RESULT:  Bootloader starts, app loads, counter output begins
+
+4. Verify expected output
+   ========== OpenCSI Toolchain Verification ==========
+   Chip: esp32, rev 300, 2 cores
+   Station MAC: a8:42:e3:5b:f4:20
+   Free heap: 304968 bytes
+   [1] Hello from OpenCSI!
+   [2] Hello from OpenCSI!
+   ... (counter increments every 1s via vTaskDelay)
+
+5. Save evidence — this file.
+
+Issues Encountered
+-------------------
+1. GDB COMx warning
+   - idf_monitor warns: "GDB cannot open serial ports accessed as COMx"
+   - Automatically falls back to \\.\COM6 — no user action needed.
+   - This is a known Windows limitation (GDB uses Cygwin-style paths).
+
+2. PowerShell output redirection with idf.py monitor
+   - Capturing monitor output via $output = & idf.py -p COM6 monitor 2>&1
+     crashes due to UnicodeEncodeError on '\ufffd' (replacement character).
+   - Root cause: ANSI escape sequences from idf_monitor confound PowerShell's
+     output encoding (cp1252). Monitor is interactive; pipe redirection is fragile.
+   - Workaround: Run interactively and copy output, or use --no-ansi flag.
+
+Milestone Assessment
+---------------------
+M0 criteria satisfied:
+  [x] Identify COM port       — COM6
+  [x] Flash firmware          — Success
+  [x] Boot ESP32              — Success (POWERON_RESET -> app_main)
+  [x] Serial monitor output   — Verified
+  [x] Save evidence           — captures/m0-firmware-verification.txt
+  [x] Document issues         — See above
