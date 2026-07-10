@@ -1,0 +1,10 @@
+menu "Experiment Configuration"
+
+    config EXP_DURATION_SECONDS
+        int "Capture duration (seconds)"
+        default 60
+        range 10 3600
+        help
+            How long the experiment runs after first CSI callback.
+
+endmenu

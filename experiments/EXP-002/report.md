@@ -6,8 +6,8 @@
 |-------|-------|
 | **Experiment ID** | EXP-002 |
 | **Title** | CSI Signal Stability Characterization |
-| **Status** | Analyzed |
-| **Report Version** | 1.0 |
+| **Status** | Reviewed (Internal) |
+| **Report Version** | 1.1 |
 | **Hardware** | ESP32 DevKit V1 (ESP32-D0WD-V3 rev3.0) |
 | **ESP-IDF Version** | v5.3.2 |
 | **Firmware** | `firmware/m3_exp_002/` (framework v0.1.1) |
@@ -174,46 +174,77 @@ The callback rate is slightly higher in EXP-002 (0.26 vs 0.20 /s). This may be d
 
 ## Conclusions
 
-1. Under idle conditions, CSI callbacks arrive at an average rate of approximately 0.25 per second, driven by ambient WiFi activity (primarily AP beacons). The rate is repeatable across runs.
+The conclusions are organized by confidence level. This is intended to help future readers understand which claims are well-supported and which remain uncertain.
 
-2. The minimum callback interval under our test conditions is approximately 81 ms. This is consistent across both captures and may represent a hardware or driver timing constraint.
+### High confidence (consistent across both captures)
 
-3. HT CSI packets appear at a consistent rate (9 per 5 minutes) under identical conditions, suggesting a deterministic source rather than random ambient traffic.
+1. **Callback rate under idle conditions is approximately 0.25 per second.** Both 300-second captures produced nearly identical rates (0.255 and 0.256 /s). This rate is driven by ambient WiFi activity (AP beacons and other frames detectable by the ESP32). It is repeatable across runs on the same hardware in the same location.
 
-4. First callback latency varies significantly (23–60 seconds), which must be accounted for in experimental timing.
+2. **The minimum callback interval is approximately 81 ms.** Both captures show a minimum of 80.96 and 80.99 ms. This is consistent with a hardware or driver processing limit. Callbacks closer than ~81 ms apart were not observed.
 
-5. RSSI range expands with longer capture durations (±5–7 dBm over 5 minutes vs ±3 dBm over 60 seconds). This sets a baseline for motion detection thresholds.
+3. **HT CSI packets appear at a consistent rate of 9 per 300 seconds.** Both captures produced exactly 9 HT (sig_mode=1) packets. This suggests a deterministic trigger (possibly AP beacon bursts or periodic network events) rather than random ambient traffic.
 
-6. The channel number is not stable across days. Future experiments should verify and log the channel before each capture.
+4. **All callbacks use antenna 0.** Consistent with EXP-001. This board (single PCB trace antenna) never reported antenna 1.
+
+5. **Noise floor is stable at -96 to -97 dBm.** Consistent across both captures and with EXP-001.
+
+### Medium confidence (limited data, but pattern is explainable)
+
+6. **RSSI range widens with capture duration.** Over 300 seconds, RSSI varied by ±5–7 dBm (capture 1: -82 to -75, capture 2: -84 to -79). Over EXP-001's 60-second captures, the range was ±3 dBm. The wider range over longer durations is consistent with slow environmental variation (temperature, AP power control, interference).
+
+7. **The active channel is not necessarily stable across experiments.** EXP-001 (July 6) recorded channel 1. EXP-002 (July 10) recorded channel 6. The AP may have changed channels due to dynamic channel selection or a reboot. This was not verified.
+
+### Low confidence (high variance, insufficient data)
+
+8. **First callback latency varies significantly.** Measured values of 23.1 and 60.3 seconds differ by 2.6×. With only two data points, we cannot determine the typical range or the cause. This is the subject of the next experiment (EXP-003).
+
+9. **Maximum gap between callbacks varies.** 27.6 seconds vs 19.6 seconds. The gap is driven by ambient WiFi activity, which was not controlled or measured. The source of the gap was not investigated.
+
+## What this experiment does not demonstrate
+
+1. **This experiment does not demonstrate that the callback stream is regular.** The average interval of ~4 seconds may mask bursty behavior. The interval distribution (median, standard deviation, histogram) was not measured.
+
+2. **This experiment does not demonstrate how the system behaves under controlled traffic.** All measurements were taken under idle conditions. The callback rate, interval distribution, and first-callback latency may change significantly when the ESP32 receives explicit traffic.
+
+3. **This experiment does not decompose the first-callback delay.** The measured latency (start → first callback) includes WiFi connection, DHCP, CSI hardware enable, and the wait for a receivable frame. These stages were not instrumented separately.
+
+4. **This experiment does not demonstrate environmental independence.** All measurements were taken in one residential room, on one AP, on one ESP32 board.
+
+## Untested assumptions
+
+1. **Ambient WiFi activity was representative.** We assumed idle conditions produce consistent ambient traffic. We did not measure the ambient channel activity (channel utilization, number of nearby APs, beacon intervals).
+
+2. **AP configuration remained constant between runs.** The channel changed from 1 to 6 between EXP-001 and EXP-002. We do not know whether the AP configuration (beacon interval, DTIM period, power settings) also changed between the two EXP-002 captures.
+
+3. **No other devices interfered.** The captures were performed in a residential environment. Other devices (phones, laptops, IoT) may have transmitted during the capture. We did not monitor or control for this.
+
+## Follow-up questions mapped to future experiments
+
+| Question | Proposed experiment |
+|----------|-------------------|
+| What causes the delay before the first CSI callback? | EXP-003 (startup timeline decomposition) |
+| Does controlled traffic stabilize callback timing? | EXP-004 (stimulus-response characterization) |
+| What is the interval distribution (median, stddev, histogram)? | EXP-004 (requires controlled traffic to establish a baseline) |
+| Does the nighttime ambient activity differ significantly? | EXP-005 (if idle characterization is needed at a different time) |
+| Which 802.11 frame types generate CSI callbacks? | Post-EXP-005 |
+
+These questions are not gaps in EXP-002. They are new research questions that deserve their own controlled experiments.
 
 ## Limitations
 
-1. **Two captures only.** A third (nighttime) capture was planned but not executed. Two data points provide limited confidence for statistical analysis.
+1. **Two captures only.** Two data points provide no confidence interval for most metrics. High-confidence claims (rate, min interval, HT count) are supported by near-identical values across runs. Low-confidence claims (first-callback latency, max gap) should be treated as preliminary.
 
-2. **Single AP environment.** Results depend on this specific router's beacon timing, channel selection, and traffic patterns. Different APs may produce different results.
+2. **Ambient WiFi was not measured or controlled.** The idle condition assumes no intentional traffic, but ambient WiFi activity was not quantified. The observed callback stream is a function of both the ESP32 hardware and the specific AP environment.
 
-3. **Single hardware instance.** One ESP32 DevKit V1 board. Results may differ with other ESP32 variants.
+3. **Single AP environment.** Results depend on this specific router's beacon timing, channel selection, and traffic patterns. Different APs may produce different results.
 
-4. **Channel 6 only.** Both captures happened to be on channel 6. We did not test on channel 1 or 11.
+4. **Single hardware instance.** One ESP32 DevKit V1 board. Results may differ with other ESP32 variants or board designs.
 
-5. **No promiscuous mode.** The ESP32 was in STA mode. Monitor mode may capture more frames.
+5. **Channel 6 only.** Both captures happened to be on channel 6. We did not test on channel 1 or 11.
 
-6. **No MAC frame classification.** Callbacks were classified by sig_mode and rate only. Frame type (beacon, probe, data, etc.) was not decoded.
+6. **No MAC frame classification.** Callbacks were classified by sig_mode and rate only. Frame type (beacon, probe, data, null, etc.) was not decoded.
 
-7. **Latency between transport_begin and first callback.** The "first callback at" time includes WiFi connection time, not just CSI enable latency. These were not separated.
-
-8. **Post-completion callbacks.** Two callbacks arrived after the stats task declared the experiment complete. This happens because `transport_write_csi_record` runs in the WiFi task context, not the stats task. The CSV data includes these callbacks but the firmware stats counter did not.
-
-## Future Work
-
-- Run a nighttime capture with minimal ambient WiFi activity
-- Decode 802.11 frame types to identify which frames generate CSI
-- Test with promiscuous/monitor mode enabled
-- Measure CSI callback latency relative to `esp_wifi_set_csi(true)`
-- Disable `dump_ack_en` to isolate ACK contribution from data frame contribution
-- Repeat on channels 1, 6, 11
-- Verify HT packet source by analyzing frame timing and content
-- Run with explicit traffic stimulus to test callback rate scaling (original EXP-002 objective)
+7. **Post-completion callbacks.** Two callbacks arrived after the stats task declared the experiment complete. The CSV data includes these callbacks but the firmware stats counter did not. This does not affect the conclusions.
 
 ## Raw Evidence
 
