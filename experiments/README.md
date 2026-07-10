@@ -35,7 +35,7 @@ This directory tracks all OpenCSI research. Each experiment answers one specific
 | 2026-07-10 | [EXP-002](EXP-002/report.md) | CSI Signal Stability Characterization | Reviewed (Internal) |
 | 2026-07-10 | [EXP-003](EXP-003/report.md) | CSI Startup Timeline Decomposition | Reviewed (Internal) |
 | 2026-07-10 | [EXP-004](EXP-004/report.md) | Traffic-Driven CSI Sampling Characterization | Analyzed |
-| — | [EXP-005](EXP-005/objective.md) | Static Environmental Variation | Proposed |
+| 2026-07-10 | [EXP-005](EXP-005/report.md) | Static Environmental Variation | Analyzed |
 | — | [EXP-006](EXP-006/objective.md) | Human Movement Baseline | Proposed |
 
 ---
@@ -54,11 +54,13 @@ experiments/
 ├── EXP-003/               CSI Startup Timeline Decomposition (Reviewed)
 │   ├── report.md
 │   └── data/
-├── EXP-004/               Traffic-Driven CSI Sampling Characterization (Proposed)
+├── EXP-004/               Traffic-Driven CSI Sampling Characterization (Analyzed)
 │   ├── objective.md
+│   ├── report.md
 │   └── data/
-├── EXP-005/               Static Environmental Variation (Proposed)
+├── EXP-005/               Static Environmental Variation (Analyzed)
 │   ├── objective.md
+│   ├── report.md
 │   └── data/
 └── EXP-006/               Human Movement Baseline (Proposed)
     ├── objective.md
