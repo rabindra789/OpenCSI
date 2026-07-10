@@ -4,6 +4,8 @@ This document describes the planned evolution of OpenCSI.
 
 These are goals, not promises. No dates are committed. Priorities may shift based on what the experiments reveal.
 
+For detailed capability definitions, experiment-to-capability mapping, and design principles, see [docs/SENSING-ROADMAP.md](docs/SENSING-ROADMAP.md).
+
 ---
 
 ## v0.1.0 — Foundation ✅
@@ -29,17 +31,27 @@ Planned:
 
 ---
 
-## v0.3.0 — Signal Processing
+## v0.3.0 — Signal Characterization
 
-Possible:
+Planned:
 
-- Data preprocessing utilities
-- Signal analysis tools
-- Feature extraction
+- Static environment baseline
+- CSI stability over hours
+- Noise floor measurement
 
 ---
 
-## v0.4.0 — Presence Detection
+## v0.4.0 — Motion Characterization
+
+Planned:
+
+- Walking vs. empty characterization
+- Motion sensitivity limits
+- Environment impact on motion signatures
+
+---
+
+## v0.5.0 — Presence Detection
 
 Possible:
 
@@ -48,11 +60,12 @@ Possible:
 
 ---
 
-## v0.5.0 — Activity Recognition
+## v0.6.0 — Activity Characterization
 
-Possible:
+Planned:
 
-- Coarse activity classification
+- Walking vs. sitting vs. standing
+- Activity transitions
 - Multi-device sensing exploration
 
 ---

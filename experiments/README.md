@@ -32,7 +32,7 @@ This directory tracks all OpenCSI research. Each experiment answers one specific
 | Date | ID | Title | Status |
 |------|----|-------|--------|
 | 2026-07-06 | [EXP-001](EXP-001/report.md) | CSI Callback Source Characterization | Peer Reviewed (Internal) |
-| — | EXP-002 | CSI Callback Rate Characterization | Planned |
+| 2026-07-10 | [EXP-002](EXP-002/report.md) | CSI Signal Stability Characterization | Analyzed |
 | — | EXP-003 | *(available)* | Proposed |
 
 ---

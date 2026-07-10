@@ -14,7 +14,6 @@
 #include "csi.h"
 #include "transport.h"
 
-#define TAG "EXP_001"
 #define LED_GPIO GPIO_NUM_2
 
 typedef struct {
@@ -27,6 +26,10 @@ typedef struct {
     int64_t started_us;
     int64_t first_csi_us;
     int64_t last_csi_us;
+    int64_t prev_csi_us;
+    int64_t interval_min_us;
+    int64_t interval_max_us;
+    int64_t gap_max_us;
 } csi_stats_t;
 
 static csi_stats_t stats = { 0 };
@@ -40,8 +43,21 @@ static void print_stats(int64_t elapsed_us, bool final)
     printf("\n=== %s STATS [%s] ===\n", final ? "FINAL" : "INTERIM", CONFIG_EXP_SCENARIO_LABEL);
     printf("elapsed_s: %.1f\n", elapsed_s);
     printf("total_csi: %lu\n", (unsigned long)stats.total_count);
-    printf("avg_per_sec: %.2f\n", avg);
+    printf("avg_per_sec: %.3f\n", avg);
     printf("rssi_range: %d .. %d dBm\n", stats.rssi_min, stats.rssi_max);
+
+    if (stats.total_count > 1) {
+        double interval_min_ms = (double)stats.interval_min_us / 1000.0;
+        double interval_max_ms = (double)stats.interval_max_us / 1000.0;
+        double interval_avg_us = (double)(stats.last_csi_us - stats.first_csi_us) / (stats.total_count - 1);
+        double interval_avg_ms = interval_avg_us / 1000.0;
+        double gap_max_s = (double)stats.gap_max_us / 1e6;
+
+        printf("interval_min_ms: %.3f\n", interval_min_ms);
+        printf("interval_avg_ms: %.3f\n", interval_avg_ms);
+        printf("interval_max_ms: %.3f\n", interval_max_ms);
+        printf("gap_max_s: %.3f\n", gap_max_s);
+    }
 
     printf("sig_mode: ");
     for (int i = 0; i < 4; i++) {
@@ -72,20 +88,41 @@ static void print_stats(int64_t elapsed_us, bool final)
     printf("========================\n");
 }
 
-static void update_stats(wifi_csi_info_t *data)
+static void update_stats(wifi_csi_info_t *data, int64_t now_us)
 {
-    stats.total_count++;
-    if (stats.total_count == 1) {
-        stats.first_csi_us = esp_timer_get_time();
+    if (stats.total_count == 0) {
+        stats.first_csi_us = now_us;
+        stats.prev_csi_us = now_us;
         stats.rssi_min = data->rx_ctrl.rssi;
         stats.rssi_max = data->rx_ctrl.rssi;
+        stats.interval_min_us = 0;
+        stats.interval_max_us = 0;
+        stats.gap_max_us = 0;
     } else {
         if (data->rx_ctrl.rssi < stats.rssi_min)
             stats.rssi_min = data->rx_ctrl.rssi;
         if (data->rx_ctrl.rssi > stats.rssi_max)
             stats.rssi_max = data->rx_ctrl.rssi;
+
+        int64_t interval = now_us - stats.prev_csi_us;
+        stats.prev_csi_us = now_us;
+
+        if (stats.total_count == 1) {
+            stats.interval_min_us = interval;
+            stats.interval_max_us = interval;
+            stats.gap_max_us = interval;
+        } else {
+            if (interval < stats.interval_min_us)
+                stats.interval_min_us = interval;
+            if (interval > stats.interval_max_us)
+                stats.interval_max_us = interval;
+            if (interval > stats.gap_max_us)
+                stats.gap_max_us = interval;
+        }
     }
-    stats.last_csi_us = esp_timer_get_time();
+
+    stats.total_count++;
+    stats.last_csi_us = now_us;
 
     int sm = data->rx_ctrl.sig_mode;
     if (sm >= 0 && sm < 4)
@@ -104,7 +141,7 @@ static void csi_callback(void *ctx, wifi_csi_info_t *data)
 {
     int64_t now = esp_timer_get_time();
     transport_write_csi_record(data, stats.total_count, now);
-    update_stats(data);
+    update_stats(data, now);
 }
 
 static void on_wifi_connected(void)
@@ -127,7 +164,7 @@ static void blink_task(void *pvParameter)
 static void stats_task(void *pvParameter)
 {
     const int duration_s = CONFIG_EXP_DURATION_SECONDS;
-    const TickType_t interval = pdMS_TO_TICKS(10000);
+    const TickType_t interval = pdMS_TO_TICKS(30000);
 
     vTaskDelay(pdMS_TO_TICKS(5000));
 
@@ -140,6 +177,7 @@ static void stats_task(void *pvParameter)
             experiment_done = true;
             print_stats(elapsed, true);
             transport_end();
+            printf("=== EXP-002 COMPLETE [%s] ===\n", CONFIG_EXP_SCENARIO_LABEL);
         }
 
         if (!experiment_done) {
@@ -174,7 +212,7 @@ void app_main(void)
 
     wifi_init(on_wifi_connected);
 
-    transport_begin("EXP-001", CONFIG_EXP_SCENARIO_LABEL, CONFIG_EXP_DURATION_SECONDS);
+    transport_begin("EXP-002", CONFIG_EXP_SCENARIO_LABEL, CONFIG_EXP_DURATION_SECONDS);
 
     stats.started_us = esp_timer_get_time();
 

@@ -1,16 +1,22 @@
-# EXP-002: CSI Callback Rate Characterization
+# EXP-002: CSI Signal Stability Characterization
 
 ## Research Question
 
-How does incoming packet rate affect CSI callback frequency?
+How stable and repeatable is the ESP32 CSI signal under controlled (idle) conditions?
 
 ## Goal
 
-Check if CSI callback frequency scales linearly with incoming traffic or hits a hardware or driver limit.
+Characterize the baseline behavior of the ESP32 CSI subsystem in a static environment with no intentional stimulus. This establishes a reference for all future sensing experiments.
 
 ## Hypothesis
 
-We expect CSI callback frequency to scale with incoming packet rate up to a saturation point. This point may be set by the WiFi task processing capacity or the serial output bandwidth. Beyond this, callbacks may be dropped, merged, or show unusual timing.
+We expect the CSI callback stream to show variation even in a static environment. The sources of this variation include AP beacon timing, ambient WiFi activity from nearby networks, and hardware-level timing jitter. We do not yet know:
+
+- How regularly CSI callbacks arrive
+- How much RSSI varies in a static environment
+- Which packet types (sig_mode, rate) appear at idle
+- Whether the CSI buffer contents are consistent across callbacks
+- How these metrics change over longer capture durations
 
 ## Setup
 
@@ -35,51 +41,77 @@ We expect CSI callback frequency to scale with incoming packet rate up to a satu
 
 ### Firmware
 
-Same instrumentation firmware as EXP-001 (`firmware/m2_exp_001/`):
-- Per-packet CSV summary line
-- Stats accumulator (RSSI range, sig_mode count, rate count, antenna count)
-- Periodic interim stats (every 10s) and final auto-summary at 60s
-- CSI config unchanged: `lltf_en=true, htltf_en=true, stbc_htltf2_en=true, ltf_merge_en=true, channel_filter_en=true, manu_scale=true, dump_ack_en=true`
+Based on the v0.1.1 framework (`firmware/m3_exp_002/`):
 
-### Stimulus
+- `transport_begin()` with experiment metadata and CSV header
+- `transport_write_csi_record()` with per-record timestamp and sequence number
+- Stats accumulator: total count, callback intervals, RSSI min/max, sig_mode histogram, rate histogram, antenna histogram
+- Periodic interim stats (every 30s) and auto-final summary at 300s
+- `transport_end()` on completion
 
-We use a Python script (`experiments/EXP-002/data/udp_sender.py`) to send UDP packets to the ESP32 on port 9999 at controlled rates. The WiFi hardware generates CSI callbacks for each packet. The ICMP Port Unreachable response from the ESP32 may trigger additional ACK-based callbacks via `dump_ack_en`.
+CSI configuration (unchanged):
+
+| Parameter | Value |
+|-----------|-------|
+| `lltf_en` | true |
+| `htltf_en` | true |
+| `stbc_htltf2_en` | true |
+| `ltf_merge_en` | true |
+| `channel_filter_en` | true |
+| `manu_scale` | true |
+| `shift` | 0 |
+| `dump_ack_en` | true |
+
+Source: `firmware/m3_exp_002/main/main.c`
 
 ## Procedure
 
-For each rate level:
+1. Place ESP32 in a static location (~3m line-of-sight to AP).
+2. Ensure no intentional movement or network activity during capture.
+3. Build firmware with scenario label.
+4. Flash to ESP32.
+5. Start serial monitor, wait for WiFi connection.
+6. Let experiment run for full duration.
+7. After auto-complete, stop monitor, save raw output.
+8. Extract CSV data and final stats.
 
-1. Build firmware with scenario label (`low-rate`, `med-rate`, `high-rate`)
-2. Flash to ESP32
-3. Start serial monitor, wait for WiFi connection
-4. Start UDP sender at target rate for 60 seconds
-5. Wait for experiment auto-complete (60s duration)
-6. Stop sender, stop monitor, save raw output
-7. Extract CSV data and final stats
+### Captures
 
-### Rate Levels
-
-| Level | Target Rate | Packets in 60s | Stimulus |
-|-------|-------------|----------------|----------|
-| Low | ~1 pkt/s | ~60 | UDP sender at 1 Hz |
-| Medium | ~10 pkt/s | ~600 | UDP sender at 10 Hz |
-| High | ~100 pkt/s | ~6000 | UDP sender at 100 Hz |
+| Capture | Label | Duration | Purpose |
+|---------|-------|----------|---------|
+| 1 | idle-5min | 300s | Extended baseline |
+| 2 | idle-5min-repeat | 300s | Repeatability check |
+| 3 | idle-5min-night | 300s | Low-ambient-activity baseline |
 
 ### Measurements
 
-- Total CSI callbacks
-- Average callbacks per second (over active CSI period)
-- RSSI range
-- sig_mode distribution
-- Rate distribution
-- Any dropped, delayed, or unexpected callback behavior
+| Metric | How measured |
+|--------|-------------|
+| Callback count | Running total |
+| Callback interval | Difference between consecutive `timestamp_us` values |
+| Average callback rate | `total_count / elapsed_s` |
+| RSSI stability | Min, max, range over duration |
+| RSSI time series | Per-callback RSSI values in CSV |
+| Packet type distribution | sig_mode and rate histograms |
+| Antenna distribution | ant0 vs ant1 count |
+| First callback latency | Time from start to first CSI callback |
+| Callback gap analysis | Maximum interval between consecutive callbacks |
 
 ## Data Files
 
-- `data/udp_sender.py`: Python script for controlled-rate UDP transmission
-- `data/exp-002-low-rate-raw.txt`: Raw serial output, low rate
-- `data/exp-002-med-rate-raw.txt`: Raw serial output, medium rate
-- `data/exp-002-high-rate-raw.txt`: Raw serial output, high rate
+- `data/exp-002-idle-5min-raw.txt`: Raw serial output, capture 1
+- `data/exp-002-idle-5min-repeat-raw.txt`: Raw serial output, capture 2
+- `data/exp-002-idle-5min-night-raw.txt`: Raw serial output, capture 3
 - `data/exp-002-data.csv`: Consolidated per-packet CSV
-- `objective.md`: This file (research question, goal, hypothesis, setup, procedure)
-- `results.md`: Results, discussion, and conclusion (written after execution)
+- `objective.md`: This file
+- `report.md`: Results, discussion, and conclusion (written after execution)
+
+## Expected Output
+
+The CSV header (from `transport_begin()`) will be:
+
+```
+# columns: seq_num, timestamp_us, rx_seq, rssi_dbm, rate, sig_mode, mcs, cwb, ant, noise_floor_dbm, channel, wifi_timestamp_us, payload_len
+```
+
+Each CSV line follows this format.

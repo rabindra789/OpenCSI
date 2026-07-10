@@ -1,0 +1,17 @@
+menu "Experiment Configuration"
+
+    config EXP_SCENARIO_LABEL
+        string "Scenario label"
+        default "idle"
+        help
+            Label for this capture run. Used in metadata output.
+            Example: idle-5min, idle-5min-repeat
+
+    config EXP_DURATION_SECONDS
+        int "Capture duration (seconds)"
+        default 300
+        range 10 3600
+        help
+            How long the experiment runs before auto-completing.
+
+endmenu

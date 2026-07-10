@@ -1,9 +1,23 @@
 #include <stdio.h>
 #include "transport.h"
 
-void transport_write_csi_record(wifi_csi_info_t *data, uint32_t total_count)
+static const char *s_exp_id = "";
+static const char *s_scenario = "";
+
+void transport_begin(const char *exp_id, const char *scenario, int duration_s)
 {
-    printf("\n=== CSI ===\n");
+    s_exp_id = exp_id;
+    s_scenario = scenario;
+
+    printf("=== %s START [%s] duration=%ds ===\n", exp_id, scenario, duration_s);
+    printf("# columns: seq_num, timestamp_us, rx_seq, rssi_dbm, rate, "
+           "sig_mode, mcs, cwb, ant, noise_floor_dbm, channel, "
+           "wifi_timestamp_us, payload_len\n");
+}
+
+void transport_write_csi_record(wifi_csi_info_t *data, uint32_t seq_num, int64_t timestamp_us)
+{
+    printf("\n=== CSI [%lu] ===\n", (unsigned long)seq_num);
     printf("MAC (src): %02x:%02x:%02x:%02x:%02x:%02x\n",
            data->mac[0], data->mac[1], data->mac[2],
            data->mac[3], data->mac[4], data->mac[5]);
@@ -43,17 +57,23 @@ void transport_write_csi_record(wifi_csi_info_t *data, uint32_t total_count)
     if (data->len < 128) printf("\n");
     printf("============\n");
 
-    printf("CSV,%lu,%u,%d,%u,%u,%u,%u,%u,%d,%u,%u,%u\n",
-           (unsigned long)total_count,
-           data->rx_seq,
-           data->rx_ctrl.rssi,
-           data->rx_ctrl.rate,
-           data->rx_ctrl.sig_mode,
-           data->rx_ctrl.mcs,
-           data->rx_ctrl.cwb,
-           data->rx_ctrl.ant,
-           data->rx_ctrl.noise_floor,
-           data->rx_ctrl.channel,
-           data->rx_ctrl.timestamp,
-           data->len);
+    printf("CSV,%lu,%lu,%u,%d,%u,%u,%u,%u,%u,%d,%u,%u,%u\n",
+           (unsigned long)seq_num,
+           (unsigned long)timestamp_us,
+           (unsigned)data->rx_seq,
+           (int)data->rx_ctrl.rssi,
+           (unsigned)data->rx_ctrl.rate,
+           (unsigned)data->rx_ctrl.sig_mode,
+           (unsigned)data->rx_ctrl.mcs,
+           (unsigned)data->rx_ctrl.cwb,
+           (unsigned)data->rx_ctrl.ant,
+           (int)data->rx_ctrl.noise_floor,
+           (unsigned)data->rx_ctrl.channel,
+           (unsigned)data->rx_ctrl.timestamp,
+           (unsigned)data->len);
+}
+
+void transport_end(void)
+{
+    printf("=== %s COMPLETE [%s] ===\n", s_exp_id, s_scenario);
 }

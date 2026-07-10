@@ -25,10 +25,12 @@ experiment/
 
 The experiment's `main.c` follows this pattern:
 
-1. Call `wifi_init()` with a callback.
-2. When the callback fires (WiFi connected), call `csi_init()` with your CSI callback.
-3. In the CSI callback, call `transport_write_csi_record()` then do your experiment-specific processing.
-4. Run your experiment logic (timing, stimulus, aggregation).
+1. Call `transport_begin()` with the experiment ID, scenario label, and duration.
+2. Call `wifi_init()` with a callback.
+3. When the callback fires (WiFi connected), call `csi_init()` with your CSI callback.
+4. In the CSI callback, call `transport_write_csi_record()` with the sequence number and timestamp, then do your experiment-specific processing.
+5. Run your experiment logic (timing, stimulus, aggregation).
+6. Call `transport_end()` when the run completes.
 
 The framework does not define how experiments should behave. It provides the building blocks.
 
@@ -103,25 +105,43 @@ The CSI configuration is currently hardcoded (lltf_en, htltf_en, dump_ack_en, et
 ```c
 #include "transport.h"
 
+void app_main(void)
+{
+    transport_begin("EXP-002", CONFIG_EXP_SCENARIO_LABEL, CONFIG_EXP_DURATION_SECONDS);
+    // ...
+    wifi_init(on_wifi_connected);
+}
+
 static void csi_callback(void *ctx, wifi_csi_info_t *data)
 {
-    transport_write_csi_record(data, total_count);
+    int64_t now = esp_timer_get_time();
+    transport_write_csi_record(data, seq_num, now);
+    // ...
 }
+
+// When duration expires:
+transport_end();
 ```
 
-The transport module exposes one function that writes the full CSI record (field dump + CSV line) in the same format used by EXP-001.
+The transport module provides three functions:
+
+| Function | Purpose |
+|----------|---------|
+| `transport_begin()` | Print experiment metadata and CSV header |
+| `transport_write_csi_record()` | Write full CSI record (field dump + CSV line) |
+| `transport_end()` | Print run completion marker |
 
 **Why transport is not called UART:** The current implementation uses UART, but the interface is independent of the medium. A future transport could write to USB CDC, TCP, UDP, or SD card without changing the rest of the framework. The experiment calls `transport_write_csi_record()` and does not need to know which medium is active.
 
 **How to add a new transport:**
 
 1. Create a new implementation file (e.g., `transport_tcp.c`).
-2. Implement `transport_write_csi_record()` using the new medium.
+2. Implement the three transport functions using the new medium.
 3. Swap the file in `CMakeLists.txt`.
 
 No other module changes. The CSI component does not know about transport. The experiment does not know about transport. The transport is a pluggable output path.
 
-**Design decision:** The transport function currently packages field dumps and CSV together because that is what the experiments needed. A future experiment that needs a different output format can either replace `transport_write_csi_record()` or call `printf` directly. The framework should not guess what output formats experiments will need.
+**Design decision:** The transport function packages field dumps and CSV together because that is what the experiments needed. A future experiment that needs a different output format can either replace `transport_write_csi_record()` or call `printf` directly. The framework should not guess what output formats experiments will need.
 
 ---
 
