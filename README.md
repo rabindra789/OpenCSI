@@ -33,17 +33,13 @@ See [`docs/DEVELOPMENT-ENVIRONMENT.md`](docs/DEVELOPMENT-ENVIRONMENT.md) for set
 | Phase | Version | Status |
 |---|---|---|
 | Foundation | v0.1.x | Complete |
-| Hardware Characterization (EXP-001-003) | v0.2.0 | Complete |
-| Signal Characterization (EXP-004-006) | v0.3.0 | Active |
-| Motion Characterization | v0.4.0 | Next |
+| Signal Acquisition & Characterization (EXP-002-005) | v0.2.0 | Complete |
+| Human Signal Characterization (EXP-006...) | v0.3.0 | Next |
+| Motion Characterization | v0.4.0 | Planned |
 | Presence Detection | v0.5.0 | Planned |
 | Activity Characterization | v0.6.0 | Planned |
 
 See [`ROADMAP.md`](ROADMAP.md) for details.
-
-## License
-
-MIT
 
 ## License
 

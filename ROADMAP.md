@@ -8,7 +8,7 @@ For detailed capability definitions, experiment-to-capability mapping, and desig
 
 ---
 
-## v0.1.0 — Foundation ✅
+## v0.1.x — Foundation ✅
 
 Completed milestones:
 
@@ -21,31 +21,31 @@ Completed milestones:
 
 ---
 
-## v0.2.0 — Hardware Characterization ✅
+## v0.2.0 — Signal Acquisition & Characterization ✅
 
-Completed:
+Four experiments characterizing the ESP32 CSI acquisition pipeline, network traffic effects, and environmental sensitivity.
 
-- CSI callback source characterization (EXP-001)
-- CSI signal stability baseline (EXP-002)
-- CSI startup timeline decomposition (EXP-003)
-- Understanding of ESP32 CSI behavior and limitations
-- Experiment registry with reproducible procedures
+### Completed
+
+- **EXP-002** — Signal stability: idle callback rate ~0.25/s, min interval ~81ms, first-callback latency 23-60s
+- **EXP-003** — Startup timeline: WiFi association dominates startup time (4-56s), CSI enable ~8ms
+- **EXP-004** — Traffic effects: callback rate saturates at ~10/s (serial bottleneck), HT ratio traffic-driven
+- **EXP-005** — Environmental effects: RSSI and callback rate respond to physical changes (metal object: -5 dBm, -73% rate)
+
+### Framework
+
+- WiFi, CSI, Transport components: stable, frozen at v0.1.1
+- No framework modifications across all experiments
 
 ---
 
-## v0.3.0 — Signal Characterization 🟢
+## v0.3.0 — Human Signal Characterization 🟡
 
-Active:
+Planned:
 
-- EXP-004: Traffic-driven CSI sampling characterization
-- EXP-005: Static environmental variation
-- EXP-006: Human movement baseline
-
-Goals:
-
-- Understand how CSI changes when we deliberately change one variable at a time
-- Build the evidence foundation for future sensing algorithms
-- No detection, no classification, no ML — pure characterization
+- EXP-006: Human movement baseline — characterize how CSI changes when a person moves through the environment
+- No classification, no detection, no ML — pure characterization
+- Build the evidence required to design the first motion detection algorithm
 
 ---
 
