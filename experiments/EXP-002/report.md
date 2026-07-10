@@ -34,6 +34,26 @@ Characterize the baseline behavior of the ESP32 CSI subsystem in a static enviro
 | Serial | COM6, 115200 baud |
 | USB-UART | CP2102 (auto-reset via DTR/RTS) |
 
+### Layout
+
+```
++--------------------+
+| Router (Room A)    |
+| Jio Fiber, 2.4 GHz |
++---------Door-------+
+          |
+          |
++--------------------+
+| Laptop             |
+|                    |
+| ESP32              |
+|                    |
+| Chair              |
++--------------------+
+```
+
+Router ~6-8m from ESP32, one wall between. ESP32 on desk, antenna facing room center.
+
 ### Network
 
 | Parameter | Value |

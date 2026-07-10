@@ -23,6 +23,26 @@ How does controlled network traffic influence CSI sampling behaviour?
 
 ## Setup
 
+### Layout
+
+```
++--------------------+
+| Router (Room A)    |
+| Jio Fiber, 2.4 GHz |
++---------Door-------+
+          |
+          |
++--------------------+
+| Laptop             |
+|                    |
+| ESP32              |
+|                    |
+| Chair              |
++--------------------+
+```
+
+Router ~6-8m from ESP32, one wall between. ESP32 on desk, antenna facing room center.
+
 Same hardware, location, AP, and firmware framework as EXP-002 and EXP-003. The experiment adds an interval histogram (10 bins from <50ms to >60s) and traffic-specific scenario labels.
 
 Firmware: `firmware/m5_exp_004`. No framework modifications. TCP server is a compile-time option in the experiment firmware (disabled by default, enabled only for tcp-download scenario).
