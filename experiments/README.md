@@ -34,7 +34,9 @@ This directory tracks all OpenCSI research. Each experiment answers one specific
 | 2026-07-06 | [EXP-001](EXP-001/report.md) | CSI Callback Source Characterization | Peer Reviewed (Internal) |
 | 2026-07-10 | [EXP-002](EXP-002/report.md) | CSI Signal Stability Characterization | Reviewed (Internal) |
 | 2026-07-10 | [EXP-003](EXP-003/report.md) | CSI Startup Timeline Decomposition | Reviewed (Internal) |
-| — | EXP-004 | *(available)* | Proposed |
+| 2026-07-10 | [EXP-004](EXP-004/report.md) | Traffic-Driven CSI Sampling Characterization | Analyzed |
+| — | [EXP-005](EXP-005/objective.md) | Static Environmental Variation | Proposed |
+| — | [EXP-006](EXP-006/objective.md) | Human Movement Baseline | Proposed |
 
 ---
 
@@ -43,13 +45,24 @@ This directory tracks all OpenCSI research. Each experiment answers one specific
 ```
 experiments/
 ├── README.md              This file — central research index
-├── EXP-001/               Peer-reviewed report
-│   ├── report.md          Full report with observations, analysis, limitations
-│   └── data/              Raw evidence organized by scenario
-├── EXP-002/               Planned experiment
-│   ├── objective.md       Research question, hypothesis, procedure
-│   └── data/              (populated during execution)
-└── EXP-003/               (available for future work)
+├── EXP-001/               CSI Callback Source Characterization (Peer Reviewed)
+│   ├── report.md
+│   └── data/
+├── EXP-002/               CSI Signal Stability Characterization (Reviewed)
+│   ├── report.md
+│   └── data/
+├── EXP-003/               CSI Startup Timeline Decomposition (Reviewed)
+│   ├── report.md
+│   └── data/
+├── EXP-004/               Traffic-Driven CSI Sampling Characterization (Proposed)
+│   ├── objective.md
+│   └── data/
+├── EXP-005/               Static Environmental Variation (Proposed)
+│   ├── objective.md
+│   └── data/
+└── EXP-006/               Human Movement Baseline (Proposed)
+    ├── objective.md
+    └── data/
 ```
 
 ## How to Read an Experiment Report

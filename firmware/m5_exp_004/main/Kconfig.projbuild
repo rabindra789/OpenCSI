@@ -1,0 +1,23 @@
+menu "Experiment Configuration"
+
+    config EXP_SCENARIO_LABEL
+        string "Scenario label"
+        default "idle"
+        help
+            Label for this capture run.
+
+    config EXP_DURATION_SECONDS
+        int "Capture duration (seconds)"
+        default 60
+        range 10 3600
+        help
+            How long the experiment runs after first CSI callback.
+
+    config EXP_ENABLE_TCP_SERVER
+        bool "Enable TCP server for TCP download scenario"
+        default n
+        help
+            Enable a TCP server on port 8888 that accepts one connection
+            and echoes data. Used for the TCP download traffic scenario.
+
+endmenu

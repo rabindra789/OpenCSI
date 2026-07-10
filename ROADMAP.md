@@ -21,23 +21,31 @@ Completed milestones:
 
 ---
 
-## v0.2.0 — Hardware Characterization
+## v0.2.0 — Hardware Characterization ✅
 
-Planned:
+Completed:
 
-- Additional CSI characterization experiments
-- Better understanding of ESP32 CSI behavior
-- Expanded experiment registry
+- CSI callback source characterization (EXP-001)
+- CSI signal stability baseline (EXP-002)
+- CSI startup timeline decomposition (EXP-003)
+- Understanding of ESP32 CSI behavior and limitations
+- Experiment registry with reproducible procedures
 
 ---
 
-## v0.3.0 — Signal Characterization
+## v0.3.0 — Signal Characterization 🟢
 
-Planned:
+Active:
 
-- Static environment baseline
-- CSI stability over hours
-- Noise floor measurement
+- EXP-004: Traffic-driven CSI sampling characterization
+- EXP-005: Static environmental variation
+- EXP-006: Human movement baseline
+
+Goals:
+
+- Understand how CSI changes when we deliberately change one variable at a time
+- Build the evidence foundation for future sensing algorithms
+- No detection, no classification, no ML — pure characterization
 
 ---
 
